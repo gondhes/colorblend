@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E904CC12A5BF5EB009423EA /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E904CC02A5BF5EB009423EA /* CameraView.swift */; };
 		BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD732E7A2A58022100C5C860 /* colorblendApp.swift */; };
 		BD732E7D2A58022100C5C860 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD732E7C2A58022100C5C860 /* ContentView.swift */; };
 		BD732E7F2A58022200C5C860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD732E7E2A58022200C5C860 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E904CC02A5BF5EB009423EA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		BD732E772A58022100C5C860 /* colorblend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colorblend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD732E7A2A58022100C5C860 /* colorblendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorblendApp.swift; sourceTree = "<group>"; };
 		BD732E7C2A58022100C5C860 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				BD732E7A2A58022100C5C860 /* colorblendApp.swift */,
 				BD732E7C2A58022100C5C860 /* ContentView.swift */,
+				8E904CC02A5BF5EB009423EA /* CameraView.swift */,
 				BD732E7E2A58022200C5C860 /* Assets.xcassets */,
 				BD732E802A58022200C5C860 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E904CC12A5BF5EB009423EA /* CameraView.swift in Sources */,
 				BD732E7D2A58022100C5C860 /* ContentView.swift in Sources */,
 				BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */,
 			);
@@ -267,9 +271,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = 8YKR56963U;
+				DEVELOPMENT_TEAM = B6Y5BXLJX9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -296,9 +301,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = 8YKR56963U;
+				DEVELOPMENT_TEAM = B6Y5BXLJX9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

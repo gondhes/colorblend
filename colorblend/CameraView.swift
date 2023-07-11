@@ -18,6 +18,11 @@ struct CameraView: View {
             CameraPreview(camera: camera)
                 .ignoresSafeArea()
             
+            VStack{
+                Image(systemName: "scope")
+                    .resizable()
+                    .frame(width: 40, height: 40)
+            }
         
             VStack {
                 Spacer()
@@ -31,6 +36,23 @@ struct CameraView: View {
                             Circle()
                                 .stroke(Color.white, lineWidth: 2)
                                 .frame(width: 75, height: 75, alignment: .center)
+//                            HStack{
+//                                Spacer()
+//                                Button(action: {
+//
+//                                }, label: {
+//                                    Image(systemName: "arrow.triangle.2.circlepath.camera")
+//                                        .foregroundColor(.black)
+//                                        .padding()
+//                                        .background(Color.white)
+//                                        .clipShape(Circle())
+//                                })
+//
+//                            }
+//                            .padding(.trailing, 20)
+//                            .padding(.leading, 10)
+//                            .padding(.bottom, 10)
+//                            Spacer()
                         }
                         .padding(.bottom, 20)
                     })
@@ -49,7 +71,7 @@ struct CameraView: View {
                         })
                         .padding(.trailing, 10)
                         .padding(.leading, 20)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 30)
                         
                         Spacer()
                         

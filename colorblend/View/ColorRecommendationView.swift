@@ -10,11 +10,15 @@ import SwiftUI
 struct ColorRecommendationView: View {
     @State private var color = String()
     @State var colorName = String()
+    @Binding var getColor: UIColor
+    
+
     var body: some View {
         NavigationView{
             ZStack{
                 VStack{
                     Text("Testing Warna")
+                        .foregroundColor(Color(uiColor: getColor))
                     TextField("Input Color", text: $colorName)
                         .foregroundColor(.black)
                         .background(Color(.red))
@@ -30,11 +34,11 @@ struct ColorRecommendationView: View {
         }
     }
 
-struct ColorRecommendationView_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorRecommendationView()
-    }
-}
+//struct ColorRecommendationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ColorRecommendationView(getColor: .blue)
+//    }
+//}
 
 struct RecommendationView: View {
     @Binding var colorName : String

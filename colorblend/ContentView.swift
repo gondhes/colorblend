@@ -12,9 +12,14 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            //            CameraView()
+//                        CameraView()
+//            TestView()
+//            CameraTestView()
+            MainScreenView()
             //            ColorRecommendationView()
-            SwiftUIView(colorChosen: colorData[5])
+//            SwiftUIView(colorChosen: colorData[5])
+//            pickColor()
+//            ContentssView()
         }
     }
 }

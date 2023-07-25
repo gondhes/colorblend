@@ -16,7 +16,9 @@ struct Tab1View: View {
     var body: some View {
 //        VStack(spacing: 0){
             ZStack{
-                CameraTestView()
+                ColorPickerView()
+//                HostedViewController()
+//                    .ignoresSafeArea()
                 //                    .ignoresSafeArea()
 //                Rectangle()
 //                    .fill(Color(red: 0.475, green: 0.718, blue: 0.808))
@@ -39,10 +41,18 @@ struct Tab1View: View {
     }
 }
 
+//struct Tab2View: View {
+//    var body: some View {
+//        Text("Hello World")
+////        MainScreen2View()
+//    }
+//}
+
 struct Tab2View: View {
     var body: some View {
-        Text("Hello World")
-//        MainScreen2View()
+        HostedViewController()
+            .ignoresSafeArea()
+//        CameraTestView()
     }
 }
 
@@ -66,6 +76,7 @@ struct MainScreenView: View {
                             Text("Find Color")
                                 .font(Font.custom("SFProText-Bold", size: 14))
                         }
+                        
                 }
                 .onAppear(){
                     UITabBar.appearance().backgroundColor = .systemBackground

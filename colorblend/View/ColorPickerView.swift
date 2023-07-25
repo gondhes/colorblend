@@ -8,7 +8,7 @@
 import SwiftUI
 import AVFoundation
 
-struct CameraTestView: View{
+struct ColorPickerView: View{
     @StateObject var cameratest = ViewController()
     @State private var showWelcomeView = false
     @State var identifier: UIColor = UIColor.black

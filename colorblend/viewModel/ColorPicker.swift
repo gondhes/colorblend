@@ -162,6 +162,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
     }
     
+    func viewDidDisappear() {
+        self.captureSession.stopRunning()
+    }
+    
+    
     let queue = DispatchQueue(label: "com.camera.video.queue")
     var center: CGPoint = CGPoint(x: WIDTH/4, y: HEIGHT/4)
     

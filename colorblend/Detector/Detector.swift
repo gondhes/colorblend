@@ -1,3 +1,11 @@
+//
+//  Detector.swift
+//  colorblend
+//
+//  Created by Fajar Wirazdi on 23/07/23.
+//
+
+
 import Vision
 import AVFoundation
 import UIKit

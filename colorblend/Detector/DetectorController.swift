@@ -1,3 +1,11 @@
+//
+//  DetectorController.swift
+//  colorblend
+//
+//  Created by Fajar Wirazdi on 23/07/23.
+//
+
+
 import UIKit
 import SwiftUI
 import AVFoundation

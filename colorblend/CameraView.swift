@@ -10,23 +10,23 @@ import SwiftUI
 import AVFoundation
 struct CameraView: View {
     @StateObject var camera = CameraModel()
-//    @State private var showSheet = false
-    
+    @State private var showSheet = false
+
     var body: some View {
         ZStack {
-            
+
             CameraPreview(camera: camera)
                 .ignoresSafeArea()
-            
+
             VStack{
                 Image(systemName: "scope")
                     .resizable()
                     .frame(width: 40, height: 40)
             }
-        
+
             VStack {
                 Spacer()
-                
+
                 if !camera.isTaken {
                     Button(action: camera.takePic, label: {
                         ZStack {
@@ -72,9 +72,9 @@ struct CameraView: View {
                         .padding(.trailing, 10)
                         .padding(.leading, 20)
                         .padding(.bottom, 30)
-                        
+
                         Spacer()
-                        
+
 //                        Button(action: {
 //                            // Handle using the captured photo
 //                            showSheet = true
@@ -92,17 +92,17 @@ struct CameraView: View {
                 }
             }
         }
-        
-        
-//        .sheet(isPresented: $showSheet) {
-//            if let image = camera.capturedImage {
-//                Image(uiImage: image)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//            } else {
-//                Text("No photo captured")
-//            }
-//        }
+
+
+        .sheet(isPresented: $showSheet) {
+            if let image = camera.capturedImage {
+                Image(uiImage: image)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            } else {
+                Text("No photo captured")
+            }
+        }
         .onAppear(perform: {
             camera.check()
         })
@@ -111,7 +111,7 @@ struct CameraView: View {
         }
 
     }
-    
+
 }
 
 
@@ -128,15 +128,15 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
     @Published var session = AVCaptureSession()
     @Published var alert = false
     @Published var output = AVCapturePhotoOutput()
-    
+
     @Published var capturedImage: UIImage?
-    
+
     @Published var preview : AVCaptureVideoPreviewLayer!
-    
+
     @Published var showSheet = false
     @Published var picData = Data(count:0)
     func check(){
-        
+
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             setUp()
@@ -150,16 +150,16 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         case .denied:
             self.alert.toggle()
             return
-            
+
         default:
             return
         }
     }
-    
+
     func setUp(){
         do{
             self.session.beginConfiguration()
-            
+
             guard let device: AVCaptureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
                 return
             }
@@ -179,7 +179,7 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
             print(error.localizedDescription)
         }
     }
-    
+
     func takePic() {
         self.output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
         DispatchQueue.global(qos: .background).async {
@@ -192,37 +192,37 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
             }
         }
     }
-    
-    
+
+
     func reTake(){
-        
+
         DispatchQueue.global(qos: .background).async {
             self.session.startRunning()
             DispatchQueue.main.async {
                 withAnimation{
                     self.isTaken.toggle()
-                    
+
                 }
                 self.picData=Data(count: 0)
-                
+
             }
         }
     }
-    
+
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         if let error = error {
             print("Error capturing photo: \(error.localizedDescription)")
             return
         }
-        
+
         guard let imageData = photo.fileDataRepresentation(), let image = UIImage(data: imageData) else {
             print("Failed to convert photo data to image")
             return
         }
-        
+
         self.capturedImage = image
     }
-    
+
 }
 
 struct CameraPreview : UIViewRepresentable{
@@ -237,7 +237,7 @@ struct CameraPreview : UIViewRepresentable{
         return view
     }
     func updateUIView(_ uiView: UIView, context: Context) {
-        
+
     }
 }
 

@@ -8,9 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    var colorModel = String()
+    
     var body: some View {
         VStack {
-            CameraView()
+//                        CameraView()
+//            TestView()
+//            CameraTestView()
+//            Home()
+            MainScreenView()
+            //            ColorRecommendationView()
+//            SwiftUIView(colorChosen: colorData[5])
+//            pickColor()
+//            ContentssView()
         }
     }
 }

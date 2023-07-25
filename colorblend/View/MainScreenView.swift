@@ -61,7 +61,7 @@ struct MainScreenView: View {
                     
                     Tab2View()
                         .tabItem{
-                            Image(systemName: "camera.filters")
+                            Image(systemName: "magnifyingglass")
                                 .imageScale(.large)
                             Text("Find Color")
                                 .font(Font.custom("SFProText-Bold", size: 14))

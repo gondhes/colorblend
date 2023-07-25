@@ -15,6 +15,7 @@ struct ContentView: View {
 //                        CameraView()
 //            TestView()
 //            CameraTestView()
+//            Home()
             MainScreenView()
             //            ColorRecommendationView()
 //            SwiftUIView(colorChosen: colorData[5])

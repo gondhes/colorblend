@@ -14,7 +14,7 @@ let WIDTH = UIScreen.main.bounds.width
 let HEIGHT = UIScreen.main.bounds.height
 
 protocol ViewControllerDelegate: AnyObject {
-    func classificationOccured(_ viewController: ViewController, identifier: UIColor)
+    func classificationOccured(_ viewController: ViewController, identifier: UIColor, identifierLabel: String)
 }
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, ObservableObject, AVCapturePhotoCaptureDelegate {
@@ -26,10 +26,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @Published var showSheet = false
     @Published var capturedImage: UIImage?
     @State var colorPick: UIColor?
+    @State var labelColor: String?
     @Published var isStop = false
-
+    
+    @Published var cameraPosition = true
+    
     var backFacingCamera: AVCaptureDevice?
     @Published var currentDevice: AVCaptureDevice?
+    
+    
+    var frontCameraDeviceInput: AVCaptureDeviceInput?
+    var backCameraDeviceInput: AVCaptureDeviceInput?
+    
     
     weak var delegate: ViewControllerDelegate?
     
@@ -62,46 +70,38 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.square.fillColor = color?.cgColor
             if color != self.colorPick {
                 self.colorPick = color
-                self.delegate?.classificationOccured(self, identifier: color ?? UIColor.black)
             }
-//            print("color:", color)
             let redColor = (color?.cgColor.components?[0] ?? 0)*255
             let greenColor = (color?.cgColor.components?[1] ?? 0)*255
             let blueColor = (color?.cgColor.components?[2] ?? 0)*255
-                     
+            
             do{
                 let config = MLModelConfiguration()
-                let model = try colorblend.ColorLabelFix(configuration:config)
-                
+                let model = try colorblend.LabelforColors(configuration:config)
                 let prediction = try model.prediction(red: Double(redColor), green: Double(greenColor), blue: Double(blueColor))
-                self.label.text = prediction.label
-
+                let labelColor = prediction.label
+                self.label.text = labelColor
+                self.labelColor = labelColor
+                self.delegate?.classificationOccured(self, identifier: color ?? UIColor.black, identifierLabel: labelColor)
             }catch{
                 print("Error")
             }
-            
-            
-//            if redColor >= 125 && greenColor >= 125 && blueColor >= 125{
-//                self.label.text = "Light"
-//            } else if redColor <= 125 && greenColor <= 125 && blueColor <= 125{
-//                self.label.text = "Dark"
-//            }
         }
     }
     
     func toggleTorch(on: Bool) {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
-
+        
         if device.hasTorch {
             do {
                 try device.lockForConfiguration()
-
+                
                 if on == true {
                     device.torchMode = .on
                 } else {
                     device.torchMode = .off
                 }
-
+                
                 device.unlockForConfiguration()
             } catch {
                 print("Torch could not be used")
@@ -116,7 +116,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     let label = UILabel()
     let square = CAShapeLayer()
     
-
+    
     func setupUI() {
         previewLayer.bounds = CGRect(x: 0, y: 0, width: WIDTH/2, height: HEIGHT/2)
         previewLayer.position = view.center
@@ -124,21 +124,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         previewLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)))
         view.layer.insertSublayer(previewLayer, at: 0)
         
-        //圆点 - bintik
+        //Bintik
         let linePath1 = UIBezierPath.init(ovalIn: CGRect.init(x: 0, y: 0, width: 8, height: 8))
         let lineShape1 = CAShapeLayer()
         lineShape1.frame = CGRect.init(x: WIDTH/2-4, y:HEIGHT/2-4, width: 8, height: 8)
         lineShape1.path = linePath1.cgPath
-        lineShape1.fillColor = UIColor.init(white: 0.7, alpha: 0.5).cgColor
+        lineShape1.fillColor = UIColor.init(white: 1, alpha: 1).cgColor
         self.view.layer.insertSublayer(lineShape1, at: 1)
-        
-        
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.tintColor = UIColor.black
-        view.addSubview(label)
-        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
         
         //Rectangle
         let squarePath = UIBezierPath()
@@ -152,13 +144,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         square.fillColor = UIColor.black.cgColor
         self.view.layer.addSublayer(square)
         
+        //Label
+        label.tintColor = UIColor.black
+        label.font = label.font.withSize(32)
+        view.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.topAnchor.constraint(equalTo: view.topAnchor, constant: 92).isActive = true
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        self.CreateUI()
         DispatchQueue.global(qos: .background).async {
+            self.CreateUI()
             self.captureSession.startRunning()
         }
     }
@@ -167,13 +166,21 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var center: CGPoint = CGPoint(x: WIDTH/4, y: HEIGHT/4)
     
     
-    
     func CreateUI(){
         self.captureSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         let devices = AVCaptureDevice.devices(for: AVMediaType.video)
-        for device in devices {
-            if device.position == AVCaptureDevice.Position.back {
-                self.backFacingCamera = device
+        if cameraPosition == true{
+            for device in devices {
+                if device.position == AVCaptureDevice.Position.back{
+                    self.backFacingCamera = device
+                }
+            }
+        }
+        else if cameraPosition == false{
+            for device in devices {
+                if device.position == AVCaptureDevice.Position.front{
+                    self.backFacingCamera = device
+                }
             }
         }
         self.currentDevice = self.backFacingCamera
@@ -217,22 +224,25 @@ struct CameraTestPreview: UIViewControllerRepresentable{
     typealias UIViewControllerType = ViewController
     @ObservedObject var cameratest: ViewController
     let identifier: Binding<UIColor>
+    let identifierLabel: Binding<String>
     
     class Coordinator: ViewControllerDelegate {
         var identifierBinding: Binding<UIColor>
+        var identifierLabelBinding: Binding<String>
         
-        init(identifierBinding: Binding<UIColor>) {
+        init(identifierBinding: Binding<UIColor>, identifierLabelBinding: Binding<String>) {
             self.identifierBinding = identifierBinding
+            self.identifierLabelBinding = identifierLabelBinding
         }
         
-        func classificationOccured(_ viewController: ViewController, identifier: UIColor) {
-            print("identifier di classification: ", identifier)
+        func classificationOccured(_ viewController: ViewController, identifier: UIColor, identifierLabel: String) {
             identifierBinding.wrappedValue = identifier
+            identifierLabelBinding.wrappedValue = identifierLabel
         }
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(identifierBinding: identifier)
+        Coordinator(identifierBinding: identifier, identifierLabelBinding: identifierLabel)
     }
     
     func makeUIViewController(context:Context) -> ViewController {

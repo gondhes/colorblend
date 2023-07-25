@@ -15,11 +15,14 @@
 		DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9678392A691FF8001F66A7 /* ColorPicker.swift */; };
 		DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783B2A692050001F66A7 /* ColorPickerView.swift */; };
 		DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783D2A6922D6001F66A7 /* MainScreenView.swift */; };
-		DA96F47E2A69B0630049C843 /* ColorLabelFix.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DA96F47D2A69B0630049C843 /* ColorLabelFix.mlmodel */; };
+		DA96F4802A6D8BF80049C843 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F47F2A6D8BF80049C843 /* CardView.swift */; };
+		DA96F4822A6EC32E0049C843 /* SnapCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4812A6EC32E0049C843 /* SnapCarousel.swift */; };
+		DA96F4842A6EC35C0049C843 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4832A6EC35C0049C843 /* Home.swift */; };
+		DA96F4862A6EC3AB0049C843 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4852A6EC3AB0049C843 /* Post.swift */; };
+		DA96F4892A6ED2220049C843 /* LabelforColors.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4882A6ED2220049C843 /* LabelforColors.mlmodel */; };
 		DACEB2FF2A5BFD1C00F917E5 /* ColorRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEB2FE2A5BFD1C00F917E5 /* ColorRecommendationView.swift */; };
 		DACEB30C2A5D5B6200F917E5 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEB30B2A5D5B6200F917E5 /* ColorData.swift */; };
 		DACEB30E2A5D5C4100F917E5 /* ColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEB30D2A5D5C4100F917E5 /* ColorModel.swift */; };
-		DACEB3102A5D5EB100F917E5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEB30F2A5D5EB100F917E5 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,12 +35,15 @@
 		DA9678392A691FF8001F66A7 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		DA96783B2A692050001F66A7 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DA96783D2A6922D6001F66A7 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
-		DA96F47D2A69B0630049C843 /* ColorLabelFix.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorLabelFix.mlmodel; sourceTree = "<group>"; };
+		DA96F47F2A6D8BF80049C843 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		DA96F4812A6EC32E0049C843 /* SnapCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCarousel.swift; sourceTree = "<group>"; };
+		DA96F4832A6EC35C0049C843 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		DA96F4852A6EC3AB0049C843 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		DA96F4882A6ED2220049C843 /* LabelforColors.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = LabelforColors.mlmodel; sourceTree = "<group>"; };
 		DACEB2FD2A5BFA4100F917E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DACEB2FE2A5BFD1C00F917E5 /* ColorRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRecommendationView.swift; sourceTree = "<group>"; };
 		DACEB30B2A5D5B6200F917E5 /* ColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
 		DACEB30D2A5D5C4100F917E5 /* ColorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorModel.swift; sourceTree = "<group>"; };
-		DACEB30F2A5D5EB100F917E5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +60,6 @@
 		BD732E6E2A58022100C5C860 = {
 			isa = PBXGroup;
 			children = (
-				DACEB30F2A5D5EB100F917E5 /* HomeView.swift */,
 				BD732E792A58022100C5C860 /* colorblend */,
 				BD732E782A58022100C5C860 /* Products */,
 			);
@@ -95,7 +100,7 @@
 		DACEB3022A5C0E5600F917E5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DA96F47D2A69B0630049C843 /* ColorLabelFix.mlmodel */,
+				DA96F4882A6ED2220049C843 /* LabelforColors.mlmodel */,
 				DACEB30D2A5D5C4100F917E5 /* ColorModel.swift */,
 			);
 			path = Model;
@@ -104,8 +109,10 @@
 		DACEB3052A5C0F1F00F917E5 /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DA96F4812A6EC32E0049C843 /* SnapCarousel.swift */,
 				DACEB30B2A5D5B6200F917E5 /* ColorData.swift */,
 				DA9678392A691FF8001F66A7 /* ColorPicker.swift */,
+				DA96F4852A6EC3AB0049C843 /* Post.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 				DA96783B2A692050001F66A7 /* ColorPickerView.swift */,
 				DACEB2FE2A5BFD1C00F917E5 /* ColorRecommendationView.swift */,
 				DA96783D2A6922D6001F66A7 /* MainScreenView.swift */,
+				DA96F47F2A6D8BF80049C843 /* CardView.swift */,
+				DA96F4832A6EC35C0049C843 /* Home.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,15 +200,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E904CC12A5BF5EB009423EA /* CameraView.swift in Sources */,
-				DA96F47E2A69B0630049C843 /* ColorLabelFix.mlmodel in Sources */,
 				DACEB30E2A5D5C4100F917E5 /* ColorModel.swift in Sources */,
 				BD732E7D2A58022100C5C860 /* ContentView.swift in Sources */,
 				DACEB30C2A5D5B6200F917E5 /* ColorData.swift in Sources */,
-				DACEB3102A5D5EB100F917E5 /* HomeView.swift in Sources */,
+				DA96F4862A6EC3AB0049C843 /* Post.swift in Sources */,
 				DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */,
+				DA96F4842A6EC35C0049C843 /* Home.swift in Sources */,
 				DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */,
+				DA96F4892A6ED2220049C843 /* LabelforColors.mlmodel in Sources */,
 				DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */,
 				BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */,
+				DA96F4822A6EC32E0049C843 /* SnapCarousel.swift in Sources */,
+				DA96F4802A6D8BF80049C843 /* CardView.swift in Sources */,
 				DACEB2FF2A5BFD1C00F917E5 /* ColorRecommendationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,26 +342,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
 				DEVELOPMENT_TEAM = FAV732MUB5;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = colorblend;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hafidz.colorblend;
+				PRODUCT_BUNDLE_IDENTIFIER = hafidzismail.colorblend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -362,26 +373,25 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
 				DEVELOPMENT_TEAM = FAV732MUB5;
-				ENABLE_PREVIEWS = YES;
+				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_NAME)";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSCameraUsageDescription = colorblend;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hafidz.colorblend;
+				PRODUCT_BUNDLE_IDENTIFIER = hafidzismail.colorblend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

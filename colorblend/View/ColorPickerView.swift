@@ -14,84 +14,84 @@ struct CameraTestView: View{
     @State var identifier: UIColor = UIColor.black
     @State var getColor: UIColor = UIColor.black
     @State var toggleFlashisOn = false
-    @State var cameraPosition = false
+    @State var cameraPositionBack = true
+    @State var identifierLabel: String = ""
+    @State var getLabelColor: String = ""
     
     var body: some View{
         NavigationView{
             ZStack{
-                CameraTestPreview(cameratest: cameratest, identifier: $identifier)
+                CameraTestPreview(cameratest: cameratest, identifier: $identifier, identifierLabel: $identifierLabel)
                     .ignoresSafeArea()
+                
                 VStack {
                     Spacer()
-                    HStack{
-                        //Flash Button
-                        Button(action: {
-                            toggleFlashisOn.toggle()
-                            if toggleFlashisOn{
-                                cameratest.toggleTorch(on: true)
-                            } else{
-                                cameratest.toggleTorch(on: false)
-                            }
-                        }, label: {
-                            if toggleFlashisOn{
-                                Image(systemName: "bolt.circle.fill")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                            } else{
-                                Image(systemName: "bolt.circle")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                            }
-                        })
-                                                
-                        
-                        if !cameratest.isTaken {
+                    ZStack (alignment: .leading){
+                        HStack (alignment: .center){
+                            //Flash Button
                             Button(action: {
-                                showWelcomeView = true
-                                print("Pindah")
-                                getColor = identifier
-                                print("COLOR: ", identifier)
-                            }, label: {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.white)
-                                        .frame(width: 65, height: 65, alignment: .center)
-                                    Circle()
-                                        .stroke(Color.white, lineWidth: 2)
-                                        .frame(width: 75, height: 75, alignment: .center)
+                                toggleFlashisOn.toggle()
+                                if toggleFlashisOn == true{
+                                    cameratest.toggleTorch(on: true)
+                                } else{
+                                    cameratest.toggleTorch(on: false)
                                 }
-                                .padding(.bottom, 20)
-                                NavigationLink("", destination: ColorRecommendationView(getColor: $getColor), isActive: $showWelcomeView)
+                            }, label: {
+                                if toggleFlashisOn{
+                                    Image(systemName: "bolt.circle.fill")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.yellow)
+                                } else{
+                                    Image(systemName: "bolt.circle")
+                                        .resizable()
+                                        .frame(width: 30, height: 30)
+                                        .foregroundColor(.white)
+                                }
                             })
-                        } else {
-                            EmptyView()
+                            
+                            if !cameratest.isTaken {
+                                Button(action: {
+                                    showWelcomeView = true
+                                    print("Pindah")
+                                    getColor = identifier
+                                    print("COLOR: ", identifier)
+                                    print("Identifier Label: ",identifierLabel)
+                                    getLabelColor = identifierLabel
+                                    print("getLabelColor: ",getLabelColor)
+                                    cameratest.toggleTorch(on: false)
+                                    print(getComplementaryForColor(color: getColor))
+                                    print("triad: ", getTriadColor(color: .black))
+                                    cameratest.captureSession.stopRunning()
+                                }, label: {
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color.white)
+                                            .frame(width: 65, height: 65, alignment: .center)
+                                        Circle()
+                                            .stroke(Color.white, lineWidth: 2)
+                                            .frame(width: 75, height: 75, alignment: .center)
+                                    }
+                                    .padding(.horizontal, 60)
+                                    NavigationLink("", destination: ColorRecommendationView(getColor: $getColor, getLabelColor: $getLabelColor), isActive: $showWelcomeView)
+                                })
+                            } else {
+                                EmptyView()
+                            }
                         }
-                        
-                        Button(action: {
-                            cameraPosition.toggle()
-                            if cameraPosition == true{
-                                Text("I Love You")
-//                                cameratest.switchButtonTapped()
-                                
-                            } else{
-                                
-//                                cameratest.switchCamera()
-
-                            }
-                        }, label: {
-                            if cameraPosition{
-                                Image(systemName: "camera.rotate.fill")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                            } else{
-                                Image(systemName: "camera.rotate")
-                                    .resizable()
-                                    .frame(width: 40, height: 40)
-                            }
-                        })
-//
                     }
+                    .padding(.bottom, 20)
+                    .padding (.horizontal, 20)
+                    .padding(.trailing, 25)
                 }
+                Image(systemName: "scope")
+                    .resizable()
+                    .frame(width: 56, height: 56)
+                    .foregroundColor(.yellow)
+                    .offset(x: 0, y: 18)
+            }
+            .onAppear(){
+                toggleFlashisOn = false
             }
         }
     }

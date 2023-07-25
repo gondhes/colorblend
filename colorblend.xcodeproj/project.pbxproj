@@ -15,6 +15,7 @@
 		BDB79FDB2A6FD22400CB972C /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB79FD72A6FD22400CB972C /* Detector.swift */; };
 		BDB79FDC2A6FD22400CB972C /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB79FD82A6FD22400CB972C /* DetectorController.swift */; };
 		BDB79FDE2A6FD22400CB972C /* YOLOv3TinyInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDB79FDA2A6FD22400CB972C /* YOLOv3TinyInt8LUT.mlmodel */; };
+		BDB79FE52A70030A00CB972C /* ColorDetectorYellow.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDB79FE42A70030A00CB972C /* ColorDetectorYellow.mlmodel */; };
 		DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9678392A691FF8001F66A7 /* ColorPicker.swift */; };
 		DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783B2A692050001F66A7 /* ColorPickerView.swift */; };
 		DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783D2A6922D6001F66A7 /* MainScreenView.swift */; };
@@ -38,6 +39,7 @@
 		BDB79FD72A6FD22400CB972C /* Detector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
 		BDB79FD82A6FD22400CB972C /* DetectorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
 		BDB79FDA2A6FD22400CB972C /* YOLOv3TinyInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyInt8LUT.mlmodel; sourceTree = "<group>"; };
+		BDB79FE42A70030A00CB972C /* ColorDetectorYellow.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorDetectorYellow.mlmodel; sourceTree = "<group>"; };
 		DA9678392A691FF8001F66A7 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		DA96783B2A692050001F66A7 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DA96783D2A6922D6001F66A7 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				BDB79FD72A6FD22400CB972C /* Detector.swift */,
 				BDB79FD82A6FD22400CB972C /* DetectorController.swift */,
+				BDB79FE42A70030A00CB972C /* ColorDetectorYellow.mlmodel */,
 				BDB79FDA2A6FD22400CB972C /* YOLOv3TinyInt8LUT.mlmodel */,
 			);
 			path = Detector;
@@ -228,6 +231,7 @@
 				DA96F4892A6ED2220049C843 /* LabelforColors.mlmodel in Sources */,
 				DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */,
 				BDB79FDE2A6FD22400CB972C /* YOLOv3TinyInt8LUT.mlmodel in Sources */,
+				BDB79FE52A70030A00CB972C /* ColorDetectorYellow.mlmodel in Sources */,
 				BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */,
 				DA96F4822A6EC32E0049C843 /* SnapCarousel.swift in Sources */,
 				DA96F4802A6D8BF80049C843 /* CardView.swift in Sources */,

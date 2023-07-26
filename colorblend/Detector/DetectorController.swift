@@ -11,8 +11,14 @@ import AVFoundation
 import Vision
 
 class DetectorController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, ObservableObject {
+    
     private var permissionGranted = false // Flag for permission
     @Published var captureSession = AVCaptureSession()
+    @Published var colorPicked = "blue" {
+        didSet {
+            setupDetector()
+        }
+    }
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
     private var previewLayer = AVCaptureVideoPreviewLayer()
     var screenRect: CGRect! = nil // For view dimensions
@@ -117,7 +123,7 @@ class DetectorController: UIViewController, AVCaptureVideoDataOutputSampleBuffer
     
     func setupCaptureSession() {
         // Camera input
-        guard let videoDevice = AVCaptureDevice.default(.builtInDualWideCamera,for: .video, position: .back) else { return }
+        guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera,for: .video, position: .back) else { return }
         self.currentDevice2 = videoDevice
         do{
             let videoDeviceInput = try AVCaptureDeviceInput(device: currentDevice2!)

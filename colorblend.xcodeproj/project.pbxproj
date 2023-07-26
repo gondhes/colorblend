@@ -12,6 +12,12 @@
 		BD732E7D2A58022100C5C860 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD732E7C2A58022100C5C860 /* ContentView.swift */; };
 		BD732E7F2A58022200C5C860 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD732E7E2A58022200C5C860 /* Assets.xcassets */; };
 		BD732E822A58022200C5C860 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD732E812A58022200C5C860 /* Preview Assets.xcassets */; };
+		BDAD8AF52A712486009FE8C9 /* PurpleDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AEF2A712485009FE8C9 /* PurpleDetector.mlmodel */; };
+		BDAD8AF62A712486009FE8C9 /* BlueDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF02A712486009FE8C9 /* BlueDetector.mlmodel */; };
+		BDAD8AF72A712486009FE8C9 /* GreenDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF12A712486009FE8C9 /* GreenDetector.mlmodel */; };
+		BDAD8AF82A712486009FE8C9 /* RedDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF22A712486009FE8C9 /* RedDetector.mlmodel */; };
+		BDAD8AF92A712486009FE8C9 /* YellowDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF32A712486009FE8C9 /* YellowDetector.mlmodel */; };
+		BDAD8AFA2A712486009FE8C9 /* PinkDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF42A712486009FE8C9 /* PinkDetector.mlmodel */; };
 		DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9678392A691FF8001F66A7 /* ColorPicker.swift */; };
 		DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783B2A692050001F66A7 /* ColorPickerView.swift */; };
 		DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783D2A6922D6001F66A7 /* MainScreenView.swift */; };
@@ -35,6 +41,12 @@
 		BD732E7C2A58022100C5C860 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BD732E7E2A58022200C5C860 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD732E812A58022200C5C860 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BDAD8AEF2A712485009FE8C9 /* PurpleDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PurpleDetector.mlmodel; sourceTree = "<group>"; };
+		BDAD8AF02A712486009FE8C9 /* BlueDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BlueDetector.mlmodel; sourceTree = "<group>"; };
+		BDAD8AF12A712486009FE8C9 /* GreenDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GreenDetector.mlmodel; sourceTree = "<group>"; };
+		BDAD8AF22A712486009FE8C9 /* RedDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RedDetector.mlmodel; sourceTree = "<group>"; };
+		BDAD8AF32A712486009FE8C9 /* YellowDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YellowDetector.mlmodel; sourceTree = "<group>"; };
+		BDAD8AF42A712486009FE8C9 /* PinkDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PinkDetector.mlmodel; sourceTree = "<group>"; };
 		DA9678392A691FF8001F66A7 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		DA96783B2A692050001F66A7 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DA96783D2A6922D6001F66A7 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -110,6 +122,12 @@
 			children = (
 				DA96F4962A704BFC0049C843 /* ColorDetectorYellow.mlmodel */,
 				DA96F4952A704BFB0049C843 /* YOLOv3TinyInt8LUT.mlmodel */,
+				BDAD8AF02A712486009FE8C9 /* BlueDetector.mlmodel */,
+				BDAD8AF12A712486009FE8C9 /* GreenDetector.mlmodel */,
+				BDAD8AF42A712486009FE8C9 /* PinkDetector.mlmodel */,
+				BDAD8AEF2A712485009FE8C9 /* PurpleDetector.mlmodel */,
+				BDAD8AF22A712486009FE8C9 /* RedDetector.mlmodel */,
+				BDAD8AF32A712486009FE8C9 /* YellowDetector.mlmodel */,
 				DA96F48E2A703E470049C843 /* Detector.swift */,
 				DA96F4912A703E810049C843 /* DetectorController.swift */,
 			);
@@ -218,17 +236,23 @@
 			files = (
 				8E904CC12A5BF5EB009423EA /* CameraView.swift in Sources */,
 				DA96F4922A703E810049C843 /* DetectorController.swift in Sources */,
+				BDAD8AF62A712486009FE8C9 /* BlueDetector.mlmodel in Sources */,
 				DA96F49A2A704DE30049C843 /* DetectorView.swift in Sources */,
 				DACEB30E2A5D5C4100F917E5 /* ColorModel.swift in Sources */,
+				BDAD8AF52A712486009FE8C9 /* PurpleDetector.mlmodel in Sources */,
 				BD732E7D2A58022100C5C860 /* ContentView.swift in Sources */,
 				DACEB30C2A5D5B6200F917E5 /* ColorData.swift in Sources */,
+				BDAD8AF72A712486009FE8C9 /* GreenDetector.mlmodel in Sources */,
 				DA96F4942A7042520049C843 /* Testing Camera.swift in Sources */,
 				DA96F48F2A703E470049C843 /* Detector.swift in Sources */,
 				DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */,
+				BDAD8AFA2A712486009FE8C9 /* PinkDetector.mlmodel in Sources */,
 				DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */,
 				DA96F4972A704BFC0049C843 /* YOLOv3TinyInt8LUT.mlmodel in Sources */,
+				BDAD8AF92A712486009FE8C9 /* YellowDetector.mlmodel in Sources */,
 				DA96F4892A6ED2220049C843 /* LabelforColors.mlmodel in Sources */,
 				DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */,
+				BDAD8AF82A712486009FE8C9 /* RedDetector.mlmodel in Sources */,
 				BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */,
 				DA96F4802A6D8BF80049C843 /* CardView.swift in Sources */,
 				DACEB2FF2A5BFD1C00F917E5 /* ColorRecommendationView.swift in Sources */,
@@ -361,12 +385,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = FAV732MUB5;
+				DEVELOPMENT_TEAM = 8YKR56963U;
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = colorblend;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -392,12 +416,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = FAV732MUB5;
+				DEVELOPMENT_TEAM = 8YKR56963U;
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = colorblend;
+				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_BUNDLE_IDENTIFIER)";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

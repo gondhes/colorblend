@@ -8,12 +8,34 @@
 import Vision
 import AVFoundation
 import UIKit
+import SwiftUI
+
+
 
 extension DetectorController {
     
+        
     func setupDetector() {
-        let modelURL = Bundle.main.url(forResource: "YOLOv3TinyInt8LUT", withExtension: "mlmodelc")
-//        let modelURL = Bundle.main.url(forResource: "ColorDetectorYellow", withExtension: "mlmodelc")
+        var selectedFilter = "BlueDetector"
+//        @ObservedObject var cameraSearch = DetectorController()
+        print(colorPicked)
+        if colorPicked == "blue" {
+            selectedFilter = "BlueDetector"
+        } else if colorPicked == "red" {
+            selectedFilter = "RedDetector"
+        } else if colorPicked == "yellow" {
+            selectedFilter = "YellowDetector"
+        } else if colorPicked == "green" {
+            selectedFilter = "GreenDetector"
+        } else if colorPicked == "purple" {
+            selectedFilter = "PurpleDetector"
+        } else if colorPicked == "pink" {
+            selectedFilter = "PinkDetector"
+        }
+        print(selectedFilter, "<<<<<<<")
+
+//        let modelURL = Bundle.main.url(forResource: "YOLOv3TinyInt8LUT", withExtension: "mlmodelc")
+        let modelURL = Bundle.main.url(forResource: selectedFilter, withExtension: "mlmodelc")
     
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL!))
@@ -78,3 +100,18 @@ extension DetectorController {
         }
     }
 }
+
+//extension SelectedFilter {
+//
+//    init?(wordName: String) {
+//        switch wordName {
+//        case "red":         self = "RedDetector"
+//        case "green":       self = "GreenDetector"
+//        case "blue":        self = "BlueDetector"
+//        case "yellow":      self = "YellowDetector"
+//        case "pink":        self = "PinkDetector"
+//        case "purple":      self = "PurpleDetector"
+//        default:            return nil
+//        }
+//    }
+//}

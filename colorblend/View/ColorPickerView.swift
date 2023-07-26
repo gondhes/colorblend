@@ -52,18 +52,16 @@ struct ColorPickerView: View{
                             
                             if !cameratest.isTaken {
                                 Button(action: {
-                                    showWelcomeView = true
-                                    print("Pindah")
                                     getColor = identifier
-                                    print("COLOR: ", identifier)
-                                    print("Identifier Label: ",identifierLabel)
                                     getLabelColor = identifierLabel
-                                    print("getLabelColor: ",getLabelColor)
                                     cameratest.toggleTorch(on: false)
-                                    print(getComplementaryForColor(color: getColor))
-                                    print("triad: ", getTriadColor(color: .black))
-                                    cameratest.captureSession.stopRunning()
-                                }, label: {
+                                    showWelcomeView = true
+                                    if cameratest.captureSession.isRunning{
+                                        cameratest.captureSession.stopRunning()
+                                    }
+                                }
+                                       
+                                       , label: {
                                     ZStack {
                                         Circle()
                                             .fill(Color.white)
@@ -75,7 +73,8 @@ struct ColorPickerView: View{
                                     .padding(.horizontal, 60)
                                     NavigationLink("", destination: ColorRecommendationView(getColor: $getColor, getLabelColor: $getLabelColor), isActive: $showWelcomeView)
                                 })
-                            } else {
+                            }
+                            else {
                                 EmptyView()
                             }
                         }

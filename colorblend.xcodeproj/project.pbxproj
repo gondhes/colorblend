@@ -26,8 +26,6 @@
 		DA96F48F2A703E470049C843 /* Detector.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F48E2A703E470049C843 /* Detector.swift */; };
 		DA96F4922A703E810049C843 /* DetectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4912A703E810049C843 /* DetectorController.swift */; };
 		DA96F4942A7042520049C843 /* Testing Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4932A7042520049C843 /* Testing Camera.swift */; };
-		DA96F4972A704BFC0049C843 /* YOLOv3TinyInt8LUT.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4952A704BFB0049C843 /* YOLOv3TinyInt8LUT.mlmodel */; };
-		DA96F4982A704BFC0049C843 /* ColorDetectorYellow.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4962A704BFC0049C843 /* ColorDetectorYellow.mlmodel */; };
 		DA96F49A2A704DE30049C843 /* DetectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96F4992A704DE30049C843 /* DetectorView.swift */; };
 		DACEB2FF2A5BFD1C00F917E5 /* ColorRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEB2FE2A5BFD1C00F917E5 /* ColorRecommendationView.swift */; };
 		DACEB30C2A5D5B6200F917E5 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEB30B2A5D5B6200F917E5 /* ColorData.swift */; };
@@ -55,8 +53,6 @@
 		DA96F48E2A703E470049C843 /* Detector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detector.swift; sourceTree = "<group>"; };
 		DA96F4912A703E810049C843 /* DetectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorController.swift; sourceTree = "<group>"; };
 		DA96F4932A7042520049C843 /* Testing Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Testing Camera.swift"; sourceTree = "<group>"; };
-		DA96F4952A704BFB0049C843 /* YOLOv3TinyInt8LUT.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YOLOv3TinyInt8LUT.mlmodel; sourceTree = "<group>"; };
-		DA96F4962A704BFC0049C843 /* ColorDetectorYellow.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorDetectorYellow.mlmodel; sourceTree = "<group>"; };
 		DA96F4992A704DE30049C843 /* DetectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorView.swift; sourceTree = "<group>"; };
 		DACEB2FD2A5BFA4100F917E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DACEB2FE2A5BFD1C00F917E5 /* ColorRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRecommendationView.swift; sourceTree = "<group>"; };
@@ -120,8 +116,6 @@
 		DA96F4902A703E690049C843 /* Detector */ = {
 			isa = PBXGroup;
 			children = (
-				DA96F4962A704BFC0049C843 /* ColorDetectorYellow.mlmodel */,
-				DA96F4952A704BFB0049C843 /* YOLOv3TinyInt8LUT.mlmodel */,
 				BDAD8AF02A712486009FE8C9 /* BlueDetector.mlmodel */,
 				BDAD8AF12A712486009FE8C9 /* GreenDetector.mlmodel */,
 				BDAD8AF42A712486009FE8C9 /* PinkDetector.mlmodel */,
@@ -248,7 +242,6 @@
 				DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */,
 				BDAD8AFA2A712486009FE8C9 /* PinkDetector.mlmodel in Sources */,
 				DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */,
-				DA96F4972A704BFC0049C843 /* YOLOv3TinyInt8LUT.mlmodel in Sources */,
 				BDAD8AF92A712486009FE8C9 /* YellowDetector.mlmodel in Sources */,
 				DA96F4892A6ED2220049C843 /* LabelforColors.mlmodel in Sources */,
 				DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */,
@@ -256,7 +249,6 @@
 				BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */,
 				DA96F4802A6D8BF80049C843 /* CardView.swift in Sources */,
 				DACEB2FF2A5BFD1C00F917E5 /* ColorRecommendationView.swift in Sources */,
-				DA96F4982A704BFC0049C843 /* ColorDetectorYellow.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

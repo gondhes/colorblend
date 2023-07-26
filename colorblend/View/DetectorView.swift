@@ -27,14 +27,23 @@ struct DetectorView: View {
                         .padding(.top, 55)
                 }
                 Spacer()
-                Picker("Color", selection: $cameraSearch.colorPicked) {
-                    ForEach(colors, id: \.self) {
-                        Text($0).tag($0)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .frame(width: UIScreen.main.bounds.size.width-18, height: 32)
+                        .foregroundColor(Color(wordName: "\(cameraSearch.colorPicked)")!)
+                        .padding(.bottom, 75)
+                        .opacity(0.5)
+                    
+                    Picker("Color", selection: $cameraSearch.colorPicked) {
+                        ForEach(colors, id: \.self) {
+                            Text($0.capitalized).tag($0)
+                                .foregroundColor(.white)
+                        }
                     }
+                    .pickerStyle(.wheel)
+                    .frame(height: 125)
+                    .padding(.bottom, 75)
                 }
-                .pickerStyle(.wheel)
-                .frame(height: 100)
-                .padding(.bottom, 75)
                 
             }
         }

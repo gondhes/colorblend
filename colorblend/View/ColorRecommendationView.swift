@@ -17,12 +17,30 @@ struct ColorRecommendationView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                TabView{
-                    ForEach(colorRecommendation) { code in
-                        CardView(colorRecommendation: code)
+                VStack{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 20)
+                            .foregroundColor(.white)
+                            .shadow(radius: 4, x: 0, y: 0)
+                        VStack{
+                            Text(getLabelColor)
+                            Image("shirt 3")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(Color(uiColor: getColor))
+                                .shadow(radius: 4, x: 0, y: 2)
+                        }
+                        .padding(.vertical)
                     }
+                    .frame(width: 300, height: 284)
+                    .padding(.horizontal, 40)
+                    TabView{
+                        ForEach(colorRecommendation) { code in
+                            CardView(colorRecommendation: code)
+                        }
+                    }
+                    .tabViewStyle(.page(indexDisplayMode: .automatic))
                 }
-                .tabViewStyle(.page)
             }
             .onAppear {
                 colorRecommendation = colorRecommendation.filter {$0.title == getLabelColor}
@@ -31,6 +49,7 @@ struct ColorRecommendationView: View {
                 colorRecommendation = colorRecommendation.filter {$0.title == newValue}
             }
         }
+        .navigationTitle("Color Recommendation for \(getLabelColor)")
     }
 }
 

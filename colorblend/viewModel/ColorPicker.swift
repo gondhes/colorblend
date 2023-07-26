@@ -136,8 +136,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let squarePath = UIBezierPath()
         squarePath.move(to: CGPoint(x: 0, y: 0))
         squarePath.addLine(to: CGPoint(x: 430, y: 0))
-        squarePath.addLine(to: CGPoint(x: 430, y: 168))
-        squarePath.addLine(to: CGPoint(x: 0, y: 168))
+        squarePath.addLine(to: CGPoint(x: 430, y: 150))
+        squarePath.addLine(to: CGPoint(x: 0, y: 150))
         squarePath.close()
         
         square.path=squarePath.cgPath

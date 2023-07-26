@@ -19,12 +19,12 @@ struct DetectorView: View {
                 ZStack {
                     Rectangle()
                         .fill(Color(wordName: "\(cameraSearch.colorPicked)")!)
-                        .frame(height: 168)
+                        .frame(height: 150)
                         .frame(maxWidth: .infinity)
                     Text("\(cameraSearch.colorPicked.capitalized)")
                         .font(.largeTitle)
                         .foregroundColor(.white)
-                        .padding(.top, 55)
+                        .padding(.top, 70)
                 }
                 Spacer()
                 ZStack {

@@ -38,52 +38,54 @@ struct MainScreenView: View {
 
 
     var body: some View {
-        ZStack{
-            HStack{
-                TabView {
-                    Tab1View()
-                        .tabItem{
-                            Image(systemName: "scope")
-                                .imageScale(.large)
-                            Text("Detect Color")
-                                .font(Font.custom("SFProText-Bold", size: 14))
-                        }
-                        .onAppear(){
-                            if cameratest.captureSession.isRunning{
-                                cameratest.viewWillDisappear(true)
-                                cameraSearch.viewWillAppear(true)
+        NavigationStack{
+            ZStack{
+                HStack{
+                    TabView {
+                        Tab1View()
+                            .tabItem{
+                                Image(systemName: "scope")
+                                    .imageScale(.large)
+                                Text("Detect Color")
+                                    .font(Font.custom("SFProText-Bold", size: 14))
                             }
-                        }
-                        .onTapGesture(){
-                            cameratest.startSession()
-                            cameraSearch.stopSession()
-                        }
-                    
-                    Tab2View()
-                        .tabItem{
-                            Image(systemName: "magnifyingglass")
-                                .imageScale(.large)
-                            Text("Find Color")
-                                .font(Font.custom("SFProText-Bold", size: 14))
-                        }.onAppear(){
-                            if cameraSearch.captureSession.isRunning{
-                                cameraSearch.viewWillDisappear(true)
-                                cameratest.viewWillAppear(true)
-
+                            .onAppear(){
+                                if cameratest.captureSession.isRunning{
+                                    cameratest.viewWillDisappear(true)
+                                    cameraSearch.viewWillAppear(true)
+                                }
                             }
-                        }
-                        .onTapGesture(){
-                            cameraSearch.startSession()
-                            cameratest.stopSession()
-                        }
-
+                            .onTapGesture(){
+                                cameratest.startSession()
+                                cameraSearch.stopSession()
+                            }
+                        
+                        Tab2View()
+                            .tabItem{
+                                Image(systemName: "magnifyingglass")
+                                    .imageScale(.large)
+                                Text("Find Color")
+                                    .font(Font.custom("SFProText-Bold", size: 14))
+                            }.onAppear(){
+                                if cameraSearch.captureSession.isRunning{
+                                    cameraSearch.viewWillDisappear(true)
+                                    cameratest.viewWillAppear(true)
+                                    
+                                }
+                            }
+                            .onTapGesture(){
+                                cameraSearch.startSession()
+                                cameratest.stopSession()
+                            }
+                        
+                    }
+                    .onAppear(){
+                        UITabBar.appearance().backgroundColor = .systemBackground
+                    }
+                    //                .tint(.black)
                 }
-                .onAppear(){
-                    UITabBar.appearance().backgroundColor = .systemBackground
-                }
-//                .tint(.black)
+                // MainScreen2View()
             }
-            // MainScreen2View()
         }
     }
 }

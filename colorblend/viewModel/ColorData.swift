@@ -62,7 +62,7 @@ class colorData {
                   ),
         
         colorModel(title: "Green",
-                   listColor: [ListColor(color: Color("White"), label: "Green"), ListColor(color: Color("Beige"), label: "Beige"), ListColor(color: Color("Light Blue"), label: "Light Blue"), ListColor(color: Color("Yellow"), label: "Yellow"), ListColor(color: Color("Purple"), label: "Purple"), ListColor(color: Color("Black"), label: "Black"), ListColor(color: Color("Orange"), label: "Orange"), ListColor(color: Color("Brown"), label: "Brown"), ListColor(color: Color("Metallic Blue"), label: "Metallic Blue")]
+                   listColor: [ListColor(color: Color("White"), label: "White"), ListColor(color: Color("Beige"), label: "Beige"), ListColor(color: Color("Light Blue"), label: "Light Blue"), ListColor(color: Color("Yellow"), label: "Yellow"), ListColor(color: Color("Purple"), label: "Purple"), ListColor(color: Color("Black"), label: "Black"), ListColor(color: Color("Orange"), label: "Orange"), ListColor(color: Color("Brown"), label: "Brown"), ListColor(color: Color("Metallic Blue"), label: "Metallic Blue")]
 //                   listLabel: [ListLabel(label: "White"), ListLabel(label: "Beige"), ListLabel(label: "Light Blue"), ListLabel(label: "Yellow"), ListLabel(label: "Purple"), ListLabel(label: "Black"), ListLabel(label: "Orange"), ListLabel(label: "Brown"), ListLabel(label: "Metallic Blue")]
                   ),
         

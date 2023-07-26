@@ -156,9 +156,31 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        DispatchQueue.global(qos: .background).async {
-            self.CreateUI()
+        self.CreateUI()
+        self.startSession()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.stopSession()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.startSession()
+    }
+    
+    func startSession(){
+        DispatchQueue.global().async {
             self.captureSession.startRunning()
+        }
+    }
+    
+    func stopSession() {
+        if captureSession.isRunning {
+            DispatchQueue.global().async {
+                self.captureSession.stopRunning()
+            }
         }
     }
     

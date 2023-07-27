@@ -64,13 +64,15 @@ struct MainScreenView: View {
                             .tabItem{
                                 Image(systemName: "magnifyingglass")
                                     .imageScale(.large)
+                                    .foregroundColor(.white)
                                 Text("Find Color")
                                     .font(Font.custom("SFProText-Bold", size: 14))
-                            }.onAppear(){
+                                    .foregroundColor(.white)
+                            }
+                            .onAppear(){
                                 if cameraSearch.captureSession.isRunning{
                                     cameraSearch.viewWillDisappear(true)
                                     cameratest.viewWillAppear(true)
-                                    
                                 }
                             }
                             .onTapGesture(){
@@ -79,8 +81,10 @@ struct MainScreenView: View {
                             }
                         
                     }
+//                    .foregroundColor(.white)
                     .onAppear(){
-                        UITabBar.appearance().backgroundColor = .systemBackground
+                        UITabBar.appearance().backgroundColor = .black
+                        UITabBar.appearance().unselectedItemTintColor = .white
                     }
                     //                .tint(.black)
                 }

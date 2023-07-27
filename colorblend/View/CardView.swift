@@ -21,6 +21,7 @@ struct CardView: View {
                             if isUpper == false {
                                 Text(i.label)
                                     .font(.title3)
+                                    .foregroundColor(.black)
                                 Image(imageCard)
                                     .resizable()
                                     .scaledToFit()
@@ -36,6 +37,7 @@ struct CardView: View {
                                     .shadow(radius: 4, x: 0, y: 2)
                                 Text(i.label)
                                     .font(.title3)
+                                    .foregroundColor(.black)
                             }
                         }
                     }

@@ -15,7 +15,6 @@ struct colorblendApp: App {
     var body: some Scene {
         WindowGroup {
             if isOnboarding{
-                SplashView()
                 OnboardingView()
             } else{
                 ContentView()

@@ -23,7 +23,7 @@ struct ColorRecommendationView: View {
             ZStack{
                 if isChoose == true{
                     if isUpper == true{
-                        VStack{
+                        VStack (spacing: 5){
                             ZStack{
                                 Rectangle()
                                     .foregroundColor(Color(uiColor: getColor))
@@ -54,7 +54,7 @@ struct ColorRecommendationView: View {
                             .frame(height: 344)
                         }
                     }else{
-                        VStack (){
+                        VStack (spacing: 5){
                             ZStack{
                                 Rectangle()
                                     .foregroundColor(Color(uiColor: getColor))
@@ -93,6 +93,9 @@ struct ColorRecommendationView: View {
                 }
             }
             .ignoresSafeArea()
+            .background(.white)
+
+
             .alert("Your \(getLabelColor) color is for", isPresented: $showAlertColor)
             {
                 Button("Upper Outfit"){

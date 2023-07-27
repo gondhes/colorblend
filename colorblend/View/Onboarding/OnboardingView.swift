@@ -23,6 +23,7 @@ struct OnboardingView: View {
                 MainScreenView()
             }
         }
+        .background(.white)
         .ignoresSafeArea()
         .toolbar{
             ToolbarItem(placement: .navigationBarTrailing){

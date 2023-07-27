@@ -84,7 +84,7 @@ extension DetectorController {
         let boxLayer = CALayer()
         boxLayer.frame = bounds
         boxLayer.borderWidth = 3.0
-        boxLayer.borderColor = CGColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+        boxLayer.borderColor = CGColor.init(red: 1.0, green: 0.8, blue: 0.0, alpha: 1.0)
         boxLayer.cornerRadius = 4
         return boxLayer
     }
@@ -101,17 +101,3 @@ extension DetectorController {
     }
 }
 
-//extension SelectedFilter {
-//
-//    init?(wordName: String) {
-//        switch wordName {
-//        case "red":         self = "RedDetector"
-//        case "green":       self = "GreenDetector"
-//        case "blue":        self = "BlueDetector"
-//        case "yellow":      self = "YellowDetector"
-//        case "pink":        self = "PinkDetector"
-//        case "purple":      self = "PurpleDetector"
-//        default:            return nil
-//        }
-//    }
-//}

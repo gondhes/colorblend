@@ -18,17 +18,28 @@ struct CardView: View {
                 ForEach(colorRecommendation.listColor, id: \.self){i in
                     ZStack(alignment: .top){
                         VStack(spacing: 10){
-                            Text(i.label)
-                            Image(imageCard)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: 140)
-                                .foregroundColor(i.color)
-                                .shadow(radius: 4, x: 0, y: 2)
+                            if isUpper == false {
+                                Text(i.label)
+                                    .font(.title3)
+                                Image(imageCard)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: 140)
+                                    .foregroundColor(i.color)
+                                    .shadow(radius: 4, x: 0, y: 2)
+                            } else{
+                                Image(imageCard)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxWidth: 140)
+                                    .foregroundColor(i.color)
+                                    .shadow(radius: 4, x: 0, y: 2)
+                                Text(i.label)
+                                    .font(.title3)
+                            }
                         }
-                        .padding(.vertical, 20)
                     }
-                    .padding(.horizontal, 40)
+                    .padding(.bottom, 40)
                 }
                 .tabViewStyle(.page)
             }

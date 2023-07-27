@@ -18,6 +18,13 @@
 		BDAD8AF82A712486009FE8C9 /* RedDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF22A712486009FE8C9 /* RedDetector.mlmodel */; };
 		BDAD8AF92A712486009FE8C9 /* YellowDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF32A712486009FE8C9 /* YellowDetector.mlmodel */; };
 		BDAD8AFA2A712486009FE8C9 /* PinkDetector.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BDAD8AF42A712486009FE8C9 /* PinkDetector.mlmodel */; };
+		DA7FB2FD2A718A4400A9F4B6 /* OnboardingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB2FC2A718A4400A9F4B6 /* OnboardingCard.swift */; };
+		DA7FB2FF2A718AF900A9F4B6 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB2FE2A718AF900A9F4B6 /* Onboarding.swift */; };
+		DA7FB3012A718B7E00A9F4B6 /* OnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB3002A718B7E00A9F4B6 /* OnboardingData.swift */; };
+		DA7FB3032A71902C00A9F4B6 /* OnboardingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB3022A71902C00A9F4B6 /* OnboardingButton.swift */; };
+		DA7FB3052A71913800A9F4B6 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB3042A71913800A9F4B6 /* OnboardingView.swift */; };
+		DA7FB3082A7256AC00A9F4B6 /* NavigationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB3072A7256AC00A9F4B6 /* NavigationExtension.swift */; };
+		DA7FB30C2A7279FF00A9F4B6 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7FB30B2A7279FF00A9F4B6 /* SplashView.swift */; };
 		DA96783A2A691FF8001F66A7 /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9678392A691FF8001F66A7 /* ColorPicker.swift */; };
 		DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783B2A692050001F66A7 /* ColorPickerView.swift */; };
 		DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA96783D2A6922D6001F66A7 /* MainScreenView.swift */; };
@@ -47,6 +54,13 @@
 		BDAD8AF22A712486009FE8C9 /* RedDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = RedDetector.mlmodel; sourceTree = "<group>"; };
 		BDAD8AF32A712486009FE8C9 /* YellowDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = YellowDetector.mlmodel; sourceTree = "<group>"; };
 		BDAD8AF42A712486009FE8C9 /* PinkDetector.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PinkDetector.mlmodel; sourceTree = "<group>"; };
+		DA7FB2FC2A718A4400A9F4B6 /* OnboardingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCard.swift; sourceTree = "<group>"; };
+		DA7FB2FE2A718AF900A9F4B6 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		DA7FB3002A718B7E00A9F4B6 /* OnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingData.swift; sourceTree = "<group>"; };
+		DA7FB3022A71902C00A9F4B6 /* OnboardingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButton.swift; sourceTree = "<group>"; };
+		DA7FB3042A71913800A9F4B6 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DA7FB3072A7256AC00A9F4B6 /* NavigationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationExtension.swift; sourceTree = "<group>"; };
+		DA7FB30B2A7279FF00A9F4B6 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		DA9678392A691FF8001F66A7 /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
 		DA96783B2A692050001F66A7 /* ColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerView.swift; sourceTree = "<group>"; };
 		DA96783D2A6922D6001F66A7 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
@@ -94,6 +108,7 @@
 		BD732E792A58022100C5C860 /* colorblend */ = {
 			isa = PBXGroup;
 			children = (
+				DA7FB3062A7256A000A9F4B6 /* Helper */,
 				DA96F4902A703E690049C843 /* Detector */,
 				DACEB3082A5C106A00F917E5 /* View */,
 				DACEB3052A5C0F1F00F917E5 /* viewModel */,
@@ -115,6 +130,24 @@
 				BD732E812A58022200C5C860 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA7FB2FB2A718A2F00A9F4B6 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DA7FB2FC2A718A4400A9F4B6 /* OnboardingCard.swift */,
+				DA7FB3022A71902C00A9F4B6 /* OnboardingButton.swift */,
+				DA7FB3042A71913800A9F4B6 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		DA7FB3062A7256A000A9F4B6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				DA7FB3072A7256AC00A9F4B6 /* NavigationExtension.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		DA96F4902A703E690049C843 /* Detector */ = {
@@ -139,6 +172,7 @@
 			children = (
 				DA96F4882A6ED2220049C843 /* LabelforColors.mlmodel */,
 				DACEB30D2A5D5C4100F917E5 /* ColorModel.swift */,
+				DA7FB2FE2A718AF900A9F4B6 /* Onboarding.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -148,6 +182,7 @@
 			children = (
 				DACEB30B2A5D5B6200F917E5 /* ColorData.swift */,
 				DA9678392A691FF8001F66A7 /* ColorPicker.swift */,
+				DA7FB3002A718B7E00A9F4B6 /* OnboardingData.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -155,11 +190,13 @@
 		DACEB3082A5C106A00F917E5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DA7FB2FB2A718A2F00A9F4B6 /* Onboarding */,
 				DA96783B2A692050001F66A7 /* ColorPickerView.swift */,
 				DACEB2FE2A5BFD1C00F917E5 /* ColorRecommendationView.swift */,
 				DA96783D2A6922D6001F66A7 /* MainScreenView.swift */,
 				DA96F47F2A6D8BF80049C843 /* CardView.swift */,
 				DA96F4992A704DE30049C843 /* DetectorView.swift */,
+				DA7FB30B2A7279FF00A9F4B6 /* SplashView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,9 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7FB2FD2A718A4400A9F4B6 /* OnboardingCard.swift in Sources */,
 				8E904CC12A5BF5EB009423EA /* CameraView.swift in Sources */,
 				DA96F4922A703E810049C843 /* DetectorController.swift in Sources */,
 				BDAD8AF62A712486009FE8C9 /* BlueDetector.mlmodel in Sources */,
+				DA7FB3032A71902C00A9F4B6 /* OnboardingButton.swift in Sources */,
+				DA7FB3012A718B7E00A9F4B6 /* OnboardingData.swift in Sources */,
 				DA96F49A2A704DE30049C843 /* DetectorView.swift in Sources */,
 				DACEB30E2A5D5C4100F917E5 /* ColorModel.swift in Sources */,
 				BDAD8AF52A712486009FE8C9 /* PurpleDetector.mlmodel in Sources */,
@@ -244,9 +284,11 @@
 				DACEB30C2A5D5B6200F917E5 /* ColorData.swift in Sources */,
 				BDAD8AF72A712486009FE8C9 /* GreenDetector.mlmodel in Sources */,
 				DA96F4942A7042520049C843 /* Testing Camera.swift in Sources */,
+				DA7FB3052A71913800A9F4B6 /* OnboardingView.swift in Sources */,
 				DA96F48F2A703E470049C843 /* Detector.swift in Sources */,
 				DA96783C2A692050001F66A7 /* ColorPickerView.swift in Sources */,
 				BDAD8AFA2A712486009FE8C9 /* PinkDetector.mlmodel in Sources */,
+				DA7FB30C2A7279FF00A9F4B6 /* SplashView.swift in Sources */,
 				DA96783E2A6922D6001F66A7 /* MainScreenView.swift in Sources */,
 				DA96F4972A704BFC0049C843 /* YOLOv3TinyInt8LUT.mlmodel in Sources */,
 				BDAD8AF92A712486009FE8C9 /* YellowDetector.mlmodel in Sources */,
@@ -255,6 +297,8 @@
 				BDAD8AF82A712486009FE8C9 /* RedDetector.mlmodel in Sources */,
 				BD732E7B2A58022100C5C860 /* colorblendApp.swift in Sources */,
 				DA96F4802A6D8BF80049C843 /* CardView.swift in Sources */,
+				DA7FB2FF2A718AF900A9F4B6 /* Onboarding.swift in Sources */,
+				DA7FB3082A7256AC00A9F4B6 /* NavigationExtension.swift in Sources */,
 				DACEB2FF2A5BFD1C00F917E5 /* ColorRecommendationView.swift in Sources */,
 				DA96F4982A704BFC0049C843 /* ColorDetectorYellow.mlmodel in Sources */,
 			);
@@ -385,7 +429,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = 8YKR56963U;
+				DEVELOPMENT_TEAM = FAV732MUB5;
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
@@ -416,7 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = 8YKR56963U;
+				DEVELOPMENT_TEAM = FAV732MUB5;
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;

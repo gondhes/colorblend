@@ -81,6 +81,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 let prediction = try model.prediction(red: Double(redColor), green: Double(greenColor), blue: Double(blueColor))
                 let labelColor = prediction.label
                 self.label.text = labelColor
+                self.label.textColor = UIColor.white
                 self.labelColor = labelColor
                 self.delegate?.classificationOccured(self, identifier: color ?? UIColor.black, identifierLabel: labelColor)
             }catch{

@@ -9,19 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var colorModel = String()
-    
+    @State var isActive: Bool = false
+
     var body: some View {
-        VStack {
-//                        CameraView()
-//            TestView()
-//            CameraTestView()
-//            Home()
-            MainScreenView()
-                .preferredColorScheme(.light)
-            //            ColorRecommendationView()
-//            SwiftUIView(colorChosen: colorData[5])
-//            pickColor()
-//            ContentssView()
+        ZStack {
+            if self.isActive{
+                MainScreenView()
+            }else{
+                SplashView()
+            }
+        }
+        .onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
+                withAnimation{
+                    self.isActive = true
+                }
+            }
         }
     }
 }

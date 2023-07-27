@@ -81,11 +81,13 @@ struct MainScreenView: View {
                     }
                     .onAppear(){
                         UITabBar.appearance().backgroundColor = .systemBackground
+                        UITabBar.appearance().unselectedItemTintColor = .white
                     }
                     //                .tint(.black)
                 }
                 // MainScreen2View()
             }
         }
+        
     }
 }

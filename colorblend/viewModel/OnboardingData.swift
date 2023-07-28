@@ -11,7 +11,7 @@ import SwiftUI
 let onboardingData: [Onboarding] = [
     Onboarding(
         title: "Color Identifier",
-        body: "Find out exactly what any color is.",
+        body: "Identifying colors using a camera, so you can easily find color you're looking for.",
         image: "Onboarding1",
         buttonText: "Next"),
     Onboarding(

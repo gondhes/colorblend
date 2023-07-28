@@ -22,6 +22,15 @@ struct OnboardingView: View {
             .navigationDestination(isPresented: $isOnboarding) {
                 MainScreenView()
             }
+            VStack (alignment: .trailing){
+                HStack{
+                    Spacer()
+                    OnboardingSkipButton()
+                }
+                .padding(.horizontal, 20)
+                Spacer()
+            }
+            .offset(y: 50)
         }
         .background(.white)
         .ignoresSafeArea()

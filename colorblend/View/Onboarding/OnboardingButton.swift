@@ -23,11 +23,31 @@ struct OnboardingButton: View {
         }){
             ZStack{
                 RoundedRectangle(cornerRadius: 16)
+                    .fill(
+                        LinearGradient(colors: [Color("ButtonGradient1"), Color("ButtonGradient2")], startPoint: .leading, endPoint: .trailing)
+
+                    )
                     .frame(width: 145, height: 40)
-                    .foregroundColor(.blue)
+                    
                 Text(onboarding.buttonText)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
+            }
+            
+        }
+    }
+}
+
+struct OnboardingSkipButton: View{
+    @AppStorage("isOnboarding") var isOnboarding: Bool?
+
+    var body: some View{
+        Button(action: {
+            isOnboarding = false
+        }){
+            ZStack{
+                Text("Skip")
+                    .foregroundColor(Color(.systemBlue))
             }
         }
     }

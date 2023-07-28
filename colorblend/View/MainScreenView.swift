@@ -90,6 +90,7 @@ struct MainScreenView: View {
                 }
                 // MainScreen2View()
             }
+            .background(.white)
         }
         
     }

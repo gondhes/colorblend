@@ -10,9 +10,11 @@ import SwiftUI
 //Marks - Color Data
 
 struct colorModel: Identifiable, Hashable{
-    let id: UUID = UUID()
+    let id: Int
     let title: String
     let listColor: [ListColor]
+    var show : Bool
+
 //    let listLabel: [ListLabel]
 }
 

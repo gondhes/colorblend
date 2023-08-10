@@ -23,36 +23,26 @@ struct ColorRecommendationView: View {
             ZStack{
                 if isChoose == true{
                     if isUpper == true{
-                        VStack (spacing: 20){
+                        VStack (spacing: 5){
                             ZStack{
                                 Rectangle()
                                     .foregroundColor(Color(uiColor: getColor))
-                                    .frame(height: 76)
+                                    .frame(height: 168)
                                 Text(getLabelColor)
-                            }
-
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
+                                    .font(.largeTitle)
                                     .foregroundColor(.white)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(.black, lineWidth: 2)
-                                    )
-                                VStack (spacing: 10){
-                                    Text(getLabelColor)
+                                    .padding(.top, 55)
+                            }
+                            ZStack{
                                     Image("shirt 3")
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 150)
                                         .foregroundColor(Color(uiColor: getColor))
                                         .shadow(radius: 4, x: 0, y: 2)
-                                }
-                                .padding(.vertical, 20)
                             }
-                            .frame(width: 300, height: 257)
+                            .frame(height: 257)
                             .padding(.horizontal, 40)
-
-                            
                             ZStack{
                                 TabView{
                                     ForEach(colorRecommendation) { code in
@@ -61,22 +51,18 @@ struct ColorRecommendationView: View {
                                 }
                                 .tabViewStyle(PageTabViewStyle())
                             }
-                            .cornerRadius(20)
-                            .background(.white)
-                            .frame(width: 300, height: 344)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.black, lineWidth: 2)
-                            )
+                            .frame(height: 344)
                         }
-                        .padding(.vertical, 20)
                     }else{
-                        VStack (spacing: 20){
+                        VStack (spacing: 5){
                             ZStack{
                                 Rectangle()
                                     .foregroundColor(Color(uiColor: getColor))
-                                    .frame(height: 76)
+                                    .frame(height: 168)
                                 Text(getLabelColor)
+                                    .font(.largeTitle)
+                                    .foregroundColor(.white)
+                                    .padding(.top, 55)
                             }
                             ZStack{
                                 TabView{
@@ -86,23 +72,10 @@ struct ColorRecommendationView: View {
                                 }
                                 .tabViewStyle(PageTabViewStyle())
                             }
-                            .cornerRadius(20)
-                            .background(.white)
-                            .frame(width: 300, height: 257)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .stroke(.black, lineWidth: 2)
-                            )
+                            .frame(height: 257)
                                    
                             ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .foregroundColor(.white)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(.black, lineWidth: 2)
-                                    )
                                 VStack (spacing: 10){
-                                    Text(getLabelColor)
                                     Image("pants")
                                         .resizable()
                                         .scaledToFit()
@@ -110,18 +83,19 @@ struct ColorRecommendationView: View {
                                         .foregroundColor(Color(uiColor: getColor))
                                         .shadow(radius: 4, x: 0, y: 2)
                                 }
-                                .padding(.vertical, 20)
                             }
-                            .frame(width: 300, height: 344)
-                            .padding(.horizontal, 40)
+                            .frame(height: 344)
                         }
-                        .padding(.vertical, 20)
-                        
                     }
-                }else {
+                }
+                else {
                     EmptyView()
                 }
             }
+            .ignoresSafeArea()
+            .background(.white)
+
+
             .alert("Your \(getLabelColor) color is for", isPresented: $showAlertColor)
             {
                 Button("Upper Outfit"){
@@ -142,7 +116,6 @@ struct ColorRecommendationView: View {
                 colorRecommendation = colorRecommendation.filter {$0.title == newValue}
             }
         }
-        .navigationTitle("Recommendation Colors")
     }
 }
 

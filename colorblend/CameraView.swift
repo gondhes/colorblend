@@ -5,28 +5,22 @@
 //  Created by Adinda Dwi on 10/07/23.
 //
 
-
 import SwiftUI
 import AVFoundation
 struct CameraView: View {
     @StateObject var camera = CameraModel()
     @State private var showSheet = false
-
     var body: some View {
         ZStack {
-
             CameraPreview(camera: camera)
                 .ignoresSafeArea()
-
-            VStack{
+            VStack {
                 Image(systemName: "scope")
                     .resizable()
                     .frame(width: 40, height: 40)
             }
-
             VStack {
                 Spacer()
-
                 if !camera.isTaken {
                     Button(action: camera.takePic, label: {
                         ZStack {
@@ -36,29 +30,29 @@ struct CameraView: View {
                             Circle()
                                 .stroke(Color.white, lineWidth: 2)
                                 .frame(width: 75, height: 75, alignment: .center)
-//                            HStack{
-//                                Spacer()
-//                                Button(action: {
-//
-//                                }, label: {
+                            //                            HStack{
+                            //                                Spacer()
+                            //                                Button(action: {
+                            //
+                            //                                }, label: {
 //                                    Image(systemName: "arrow.triangle.2.circlepath.camera")
-//                                        .foregroundColor(.black)
-//                                        .padding()
-//                                        .background(Color.white)
-//                                        .clipShape(Circle())
-//                                })
-//
-//                            }
-//                            .padding(.trailing, 20)
-//                            .padding(.leading, 10)
-//                            .padding(.bottom, 10)
-//                            Spacer()
+                            //                                        .foregroundColor(.black)
+                            //                                        .padding()
+                            //                                        .background(Color.white)
+                            //                                        .clipShape(Circle())
+                            //                                })
+                            //
+                            //                            }
+                            //                            .padding(.trailing, 20)
+                            //                            .padding(.leading, 10)
+                            //                            .padding(.bottom, 10)
+                            //                            Spacer()
                         }
                         .padding(.bottom, 20)
                     })
                 } else {
                     Spacer()
-                    HStack{
+                    HStack {
                         Button(action: {
                             // Handle retaking the photo
                             camera.reTake()
@@ -72,28 +66,24 @@ struct CameraView: View {
                         .padding(.trailing, 10)
                         .padding(.leading, 20)
                         .padding(.bottom, 30)
-
                         Spacer()
-
-//                        Button(action: {
-//                            // Handle using the captured photo
-//                            showSheet = true
-//                            // Do something with the captured photo here
-//                        }, label: {
-//                            Text("Use Photo")
-//                                .foregroundColor(.black)
-//                                .fontWeight(.semibold)
-//                                .padding(.vertical, 10)
-//                                .padding(.horizontal, 20)
-//                                .background(Color.white)
-//                                .clipShape(Capsule())
-//                        })
+                        //                        Button(action: {
+                        //                            // Handle using the captured photo
+                        //                            showSheet = true
+                        //                            // Do something with the captured photo here
+                        //                        }, label: {
+                        //                            Text("Use Photo")
+                        //                                .foregroundColor(.black)
+                        //                                .fontWeight(.semibold)
+                        //                                .padding(.vertical, 10)
+                        //                                .padding(.horizontal, 20)
+                        //                                .background(Color.white)
+                        //                                .clipShape(Capsule())
+                        //                        })
                     }
                 }
             }
         }
-
-
         .sheet(isPresented: $showSheet) {
             if let image = camera.capturedImage {
                 Image(uiImage: image)
@@ -109,12 +99,8 @@ struct CameraView: View {
         .alert(isPresented: $camera.alert) {
             Alert(title: Text("Enable camera"))
         }
-
     }
-
 }
-
-
 
 struct CameraView_Previews: PreviewProvider {
     static var previews: some View {
@@ -122,8 +108,7 @@ struct CameraView_Previews: PreviewProvider {
     }
 }
 
-
-class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
+class CameraModel: NSObject, ObservableObject, AVCapturePhotoCaptureDelegate {
     @Published var isTaken = false
     @Published var session = AVCaptureSession()
     @Published var alert = false
@@ -131,19 +116,19 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
 
     @Published var capturedImage: UIImage?
 
-    @Published var preview : AVCaptureVideoPreviewLayer!
+    @Published var preview: AVCaptureVideoPreviewLayer!
 
     @Published var showSheet = false
-    @Published var picData = Data(count:0)
-    func check(){
+    @Published var picData = Data(count: 0)
+    func check() {
 
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             setUp()
             return
-        case .notDetermined :
+        case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { (status) in
-                if status{
+                if status {
                     self.setUp()
                 }
             }
@@ -156,26 +141,29 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         }
     }
 
-    func setUp(){
-        do{
+    func setUp() {
+        do {
             self.session.beginConfiguration()
 
-            guard let device: AVCaptureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
+            guard let device: AVCaptureDevice = AVCaptureDevice.default(
+                .builtInWideAngleCamera,
+                for: .video,
+                position: .back) else {
                 return
             }
             let input = try AVCaptureDeviceInput(device: device)
-            if self.session.canAddInput(input){
+            if self.session.canAddInput(input) {
                 print("input taken")
                 self.session.addInput(input)
-            }else{
+            } else {
                 print("input not  taken")
             }
-            if self.session.canAddOutput(output){
+            if self.session.canAddOutput(output) {
                 print("output taken")
                 self.session.addOutput(output)
             }
             self.session.commitConfiguration()
-        }catch{
+            } catch {
             print(error.localizedDescription)
         }
     }
@@ -193,13 +181,12 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
         }
     }
 
-
-    func reTake(){
+    func reTake() {
 
         DispatchQueue.global(qos: .background).async {
             self.session.startRunning()
             DispatchQueue.main.async {
-                withAnimation{
+                withAnimation {
                     self.isTaken.toggle()
 
                 }
@@ -225,10 +212,10 @@ class CameraModel : NSObject, ObservableObject, AVCapturePhotoCaptureDelegate{
 
 }
 
-struct CameraPreview : UIViewRepresentable{
-    @ObservedObject var camera : CameraModel
-    func makeUIView(context:Context) -> UIView {
-        let view = UIView(frame:UIScreen.main.bounds)
+struct CameraPreview: UIViewRepresentable {
+    @ObservedObject var camera: CameraModel
+    func makeUIView(context: Context) -> UIView {
+        let view = UIView(frame: UIScreen.main.bounds)
         camera.preview = AVCaptureVideoPreviewLayer(session: camera.session)
         camera.preview.frame = view.frame
         camera.preview.videoGravity = .resizeAspectFill
@@ -240,4 +227,3 @@ struct CameraPreview : UIViewRepresentable{
 
     }
 }
-

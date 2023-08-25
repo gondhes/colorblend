@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Onboarding: Identifiable{
+struct Onboarding: Identifiable {
     var id = UUID()
     var title: String
     var body: String

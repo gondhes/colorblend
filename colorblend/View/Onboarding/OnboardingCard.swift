@@ -9,24 +9,22 @@ import SwiftUI
 
 struct OnboardingCard: View {
     var onboarding: Onboarding
-    
     @State private var isAnimating: Bool = false
     @Binding var activeScreen: Int
     var maxIndex: Int = 1
-    
     var body: some View {
-        ZStack{
-            VStack{
+        ZStack {
+            VStack {
                 Spacer()
                 Image(onboarding.image)
                     .resizable()
                     .scaledToFit()
                     .padding(.horizontal, 40)
                 Spacer()
-                ZStack{
+                ZStack {
                     RoundedRectangle(cornerRadius: 40)
                         .foregroundColor(Color("Onboarding"))
-                    VStack(spacing: 20){
+                    VStack(spacing: 20) {
                         Text(onboarding.title)
                             .font(.title)
                             .fontWeight(.bold)
@@ -47,8 +45,8 @@ struct OnboardingCard: View {
             }
         }
         .ignoresSafeArea()
-        .onAppear{
-            withAnimation(.easeOut(duration: 0.5)){
+        .onAppear {
+            withAnimation(.easeOut(duration: 0.5)) {
                 isAnimating = true
             }
         }

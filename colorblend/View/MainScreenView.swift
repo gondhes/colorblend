@@ -12,23 +12,20 @@ struct Tab1View: View {
     @State private var showWelcomeView = false
     @State var identifier: UIColor = UIColor.black
     @State var getColor: UIColor = UIColor.black
-    
     var body: some View {
         //        VStack(spacing: 0){
-        ZStack{
+        ZStack {
             ColorPickerView()
                 .ignoresSafeArea()
-
         }
     }
 }
 
 struct Tab2View: View {
     var body: some View {
-//        MainScreen2View()
+        //        MainScreen2View()
         DetectorView()
             .ignoresSafeArea()
-
     }
 }
 
@@ -36,32 +33,31 @@ struct MainScreenView: View {
     @StateObject var cameratest = ViewController()
     @StateObject var cameraSearch = DetectorController()
 
-
     var body: some View {
-        NavigationStack{
-            ZStack{
-                HStack{
+        NavigationStack {
+            ZStack {
+                HStack {
                     TabView {
                         Tab1View()
-                            .tabItem{
+                            .tabItem {
                                 Image(systemName: "scope")
                                     .imageScale(.large)
                                 Text("Detect Color")
                                     .font(Font.custom("SFProText-Bold", size: 14))
                             }
-                            .onAppear(){
-                                if cameratest.captureSession.isRunning{
+                            .onAppear {
+                                if cameratest.captureSession.isRunning {
                                     cameratest.viewWillDisappear(true)
                                     cameraSearch.viewWillAppear(true)
                                 }
                             }
-                            .onTapGesture(){
+                            .onTapGesture {
                                 cameratest.startSession()
                                 cameraSearch.stopSession()
                             }
-                        
+
                         Tab2View()
-                            .tabItem{
+                            .tabItem {
                                 Image(systemName: "magnifyingglass")
                                     .imageScale(.large)
                                     .foregroundColor(.white)
@@ -69,20 +65,20 @@ struct MainScreenView: View {
                                     .font(Font.custom("SFProText-Bold", size: 14))
                                     .foregroundColor(.white)
                             }
-                            .onAppear(){
-                                if cameraSearch.captureSession.isRunning{
+                            .onAppear {
+                                if cameraSearch.captureSession.isRunning {
                                     cameraSearch.viewWillDisappear(true)
                                     cameratest.viewWillAppear(true)
                                 }
                             }
-                            .onTapGesture(){
+                            .onTapGesture {
                                 cameraSearch.startSession()
                                 cameratest.stopSession()
                             }
-                        
+
                     }
-//                    .foregroundColor(.white)
-                    .onAppear(){
+                    //                    .foregroundColor(.white)
+                    .onAppear {
                         UITabBar.appearance().backgroundColor = .black
                         UITabBar.appearance().unselectedItemTintColor = .white
                     }
@@ -92,6 +88,6 @@ struct MainScreenView: View {
             }
             .background(.white)
         }
-        
+
     }
 }

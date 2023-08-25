@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashView: View {
     var body: some View {
-        ZStack{
+        ZStack {
             Image("Logo Colorblend")
                 .resizable()
                 .scaledToFit()

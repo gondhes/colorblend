@@ -7,13 +7,13 @@
 
 import Foundation
 import SwiftUI
-//Marks - Color Data
+// Marks - Color Data
 
-struct colorModel: Identifiable, Hashable{
+struct ColorModel: Identifiable, Hashable {
     let id: Int
     let title: String
     let listColor: [ListColor]
-    var show : Bool
+    var show: Bool
 
 //    let listLabel: [ListLabel]
 }
@@ -23,6 +23,5 @@ struct ListColor: Hashable {
     let label: String
 }
 
-//struct ListLabel: Hashable{
+// struct ListLabel: Hashable{
 //    let label: String
-//}

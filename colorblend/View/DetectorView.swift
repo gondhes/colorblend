@@ -11,9 +11,8 @@ struct DetectorView: View {
     @StateObject var cameraSearch = DetectorController()
     var colors = ["blue", "red", "yellow", "green", "purple", "pink"]
 
-    
     var body: some View {
-        ZStack{
+        ZStack {
             HostedViewController(cameraSearch: cameraSearch)
             VStack {
                 ZStack {
@@ -33,7 +32,7 @@ struct DetectorView: View {
                         .foregroundColor(Color(wordName: "\(cameraSearch.colorPicked)")!)
                         .padding(.bottom, 75)
                         .opacity(0.5)
-                    
+
                     Picker("Color", selection: $cameraSearch.colorPicked) {
                         ForEach(colors, id: \.self) {
                             Text($0.capitalized).tag($0)
@@ -44,7 +43,7 @@ struct DetectorView: View {
                     .frame(height: 125)
                     .padding(.bottom, 75)
                 }
-                
+
             }
         }
         .ignoresSafeArea()
@@ -52,23 +51,20 @@ struct DetectorView: View {
 }
 
 extension Color {
-    
+
     init?(wordName: String) {
-        switch wordName {
-        case "clear":       self = .clear
-        case "black":       self = .black
-        case "white":       self = .white
-        case "gray":        self = .gray
-        case "red":         self = .red
-        case "green":       self = .green
-        case "blue":        self = .blue
-        case "orange":      self = .orange
-        case "yellow":      self = .yellow
-        case "pink":        self = .pink
-        case "purple":      self = .purple
-        case "primary":     self = .primary
-        case "secondary":   self = .secondary
-        default:            return nil
+        let colorMapping: [String: Color] = [
+            "clear": .clear, "black": .black, "white": .white,
+            "gray": .gray, "red": .red, "green": .green,
+            "blue": .blue, "orange": .orange, "yellow": .yellow,
+            "pink": .pink, "purple": .purple,
+            "primary": .primary, "secondary": .secondary
+        ]
+
+        guard let color = colorMapping[wordName] else {
+            return nil
         }
+
+        self = color
     }
 }

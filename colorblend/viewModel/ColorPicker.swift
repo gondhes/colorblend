@@ -17,10 +17,13 @@ protocol ViewControllerDelegate: AnyObject {
     func classificationOccured(_ viewController: ViewController, identifier: UIColor, identifierLabel: String)
 }
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, ObservableObject, AVCapturePhotoCaptureDelegate {
-    
+class ViewController: UIViewController,
+                      AVCaptureVideoDataOutputSampleBufferDelegate,
+                      ObservableObject,
+                      AVCapturePhotoCaptureDelegate {
+
     @Published var captureSession = AVCaptureSession()
-    @Published var previewtest : AVCaptureVideoPreviewLayer!
+    @Published var previewtest: AVCaptureVideoPreviewLayer!
     @Published var output = AVCapturePhotoOutput()
     @Published var isTaken = false
     @Published var showSheet = false
@@ -28,20 +31,19 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @State var colorPick: UIColor?
     @State var labelColor: String?
     @Published var isStop = false
-    
+
     @Published var cameraPosition = true
-    
+
     var backFacingCamera: AVCaptureDevice?
     @Published var currentDevice: AVCaptureDevice?
-    
-    
+
     var frontCameraDeviceInput: AVCaptureDeviceInput?
     var backCameraDeviceInput: AVCaptureDeviceInput?
-    
-    
+
     weak var delegate: ViewControllerDelegate?
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+    func captureOutput(_ output: AVCaptureOutput,
+                       didOutput sampleBuffer: CMSampleBuffer,
+                       from connection: AVCaptureConnection) {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             return
         }
@@ -56,11 +58,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let bimapInfo: CGBitmapInfo = [
             .byteOrder32Little,
             CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedFirst.rawValue)]
-        
-        guard let content = CGContext(data: baseAddr, width: width, height: height, bitsPerComponent: 8, bytesPerRow: bytesPerRow, space: colorSpace, bitmapInfo: bimapInfo.rawValue) else {
+
+        guard let content = CGContext(data: baseAddr,
+                                      width: width,
+                                      height: height,
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: bytesPerRow,
+                                      space: colorSpace,
+                                      bitmapInfo: bimapInfo.rawValue)
+        else {
             return
         }
-        
+
         guard let cgImage = content.makeImage() else {
             return
         }
@@ -74,35 +83,38 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let redColor = (color?.cgColor.components?[0] ?? 0)*255
             let greenColor = (color?.cgColor.components?[1] ?? 0)*255
             let blueColor = (color?.cgColor.components?[2] ?? 0)*255
-            
-            do{
+
+            do {
                 let config = MLModelConfiguration()
-                let model = try colorblend.LabelforColors(configuration:config)
-                let prediction = try model.prediction(red: Double(redColor), green: Double(greenColor), blue: Double(blueColor))
+                let model = try colorblend.LabelforColors(configuration: config)
+                let prediction = try model.prediction(red: Double(redColor),
+                                                      green: Double(greenColor),
+                                                      blue: Double(blueColor))
                 let labelColor = prediction.label
                 self.label.text = labelColor
                 self.label.textColor = UIColor.white
                 self.labelColor = labelColor
-                self.delegate?.classificationOccured(self, identifier: color ?? UIColor.black, identifierLabel: labelColor)
-            }catch{
+                self.delegate?.classificationOccured(
+                    self, identifier: color ?? UIColor.black, identifierLabel: labelColor)
+            } catch {
                 print("Error")
             }
         }
     }
-    
-    func toggleTorch(on: Bool) {
+
+    func toggleTorch(active: Bool) {
         guard let device = AVCaptureDevice.default(for: .video) else { return }
-        
+
         if device.hasTorch {
             do {
                 try device.lockForConfiguration()
-                
-                if on == true {
+
+                if active == true {
                     device.torchMode = .on
                 } else {
                     device.torchMode = .off
                 }
-                
+
                 device.unlockForConfiguration()
             } catch {
                 print("Torch could not be used")
@@ -111,41 +123,40 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             print("Torch is not available")
         }
     }
-    
+
     let previewLayer = CALayer()
     let lineShape = CAShapeLayer()
     let label = UILabel()
     let square = CAShapeLayer()
-    
-    
+
     func setupUI() {
         previewLayer.bounds = CGRect(x: 0, y: 0, width: WIDTH/2, height: HEIGHT/2)
         previewLayer.position = view.center
         previewLayer.contentsGravity = CALayerContentsGravity.resizeAspectFill
         previewLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)))
         view.layer.insertSublayer(previewLayer, at: 0)
-        
-        //Bintik
+
+        // Bintik
         let linePath1 = UIBezierPath.init(ovalIn: CGRect.init(x: 0, y: 0, width: 8, height: 8))
         let lineShape1 = CAShapeLayer()
-        lineShape1.frame = CGRect.init(x: WIDTH/2-4, y:HEIGHT/2-4, width: 8, height: 8)
+        lineShape1.frame = CGRect.init(x: WIDTH/2-4, y: HEIGHT/2-4, width: 8, height: 8)
         lineShape1.path = linePath1.cgPath
         lineShape1.fillColor = UIColor.init(white: 1, alpha: 1).cgColor
         self.view.layer.insertSublayer(lineShape1, at: 1)
-        
-        //Rectangle
+
+        // Rectangle
         let squarePath = UIBezierPath()
         squarePath.move(to: CGPoint(x: 0, y: 0))
         squarePath.addLine(to: CGPoint(x: 430, y: 0))
         squarePath.addLine(to: CGPoint(x: 430, y: 150))
         squarePath.addLine(to: CGPoint(x: 0, y: 150))
         squarePath.close()
-        
+
         square.path=squarePath.cgPath
         square.fillColor = UIColor.black.cgColor
         self.view.layer.addSublayer(square)
-        
-        //Label
+
+        // Label
         label.tintColor = UIColor.black
         label.font = label.font.withSize(32)
         view.addSubview(label)
@@ -153,30 +164,30 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         label.topAnchor.constraint(equalTo: view.topAnchor, constant: 92).isActive = true
         label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        self.CreateUI()
+        self.createUI()
         self.startSession()
     }
-    
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.stopSession()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.startSession()
     }
-    
-    func startSession(){
+
+    func startSession() {
         DispatchQueue.global().async {
             self.captureSession.startRunning()
         }
     }
-    
+
     func stopSession() {
         if captureSession.isRunning {
             DispatchQueue.global().async {
@@ -184,31 +195,36 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         }
     }
-    
+
     let queue = DispatchQueue(label: "com.camera.video.queue")
     var center: CGPoint = CGPoint(x: WIDTH/4, y: HEIGHT/4)
-    
-    
-    func CreateUI(){
+
+    func createUI() {
         self.captureSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
-        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
-        if cameraPosition == true{
+        //        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+        let devices = AVCaptureDevice.DiscoverySession.init(deviceTypes: [
+            .builtInWideAngleCamera,
+            .builtInDualCamera],
+                                                            mediaType: .video,
+                                                            position: .back).devices
+        if cameraPosition == true {
             for device in devices {
-                if device.position == AVCaptureDevice.Position.back{
+                if device.position == AVCaptureDevice.Position.back {
                     self.backFacingCamera = device
                 }
             }
         }
-        else if cameraPosition == false{
+        else if cameraPosition == false {
             for device in devices {
-                if device.position == AVCaptureDevice.Position.front{
+                if device.position == AVCaptureDevice.Position.front {
                     self.backFacingCamera = device
                 }
             }
         }
         self.currentDevice = self.backFacingCamera
         do {
-            let captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice!)
+            guard let currentDevice else { return }
+            let captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice)
             let videoOutput = AVCaptureVideoDataOutput()
             videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: NSNumber(value: kCMPixelFormat_32BGRA)] as? [String : Any]
             videoOutput.alwaysDiscardsLateVideoFrames = true
@@ -225,13 +241,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
 }
 
-
 extension CALayer: ObservableObject {
     func pickColor(at position: CGPoint) -> UIColor? {
         var pixel = [UInt8](repeatElement(0, count: 4))
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
-        guard let context = CGContext(data: &pixel, width: 1, height: 1, bitsPerComponent: 8, bytesPerRow: 4, space: colorSpace, bitmapInfo: bitmapInfo) else {
+        guard let context = CGContext(data: &pixel,
+                                      width: 1,
+                                      height: 1,
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: 4,
+                                      space: colorSpace,
+                                      bitmapInfo: bitmapInfo) else {
             return nil
         }
         context.translateBy(x: -position.x, y: -position.y)
@@ -243,37 +264,130 @@ extension CALayer: ObservableObject {
     }
 }
 
-struct CameraTestPreview: UIViewControllerRepresentable{
+struct CameraTestPreview: UIViewControllerRepresentable {
     typealias UIViewControllerType = ViewController
     @ObservedObject var cameratest: ViewController
     let identifier: Binding<UIColor>
     let identifierLabel: Binding<String>
-    
+
     class Coordinator: ViewControllerDelegate {
         var identifierBinding: Binding<UIColor>
         var identifierLabelBinding: Binding<String>
-        
+
         init(identifierBinding: Binding<UIColor>, identifierLabelBinding: Binding<String>) {
             self.identifierBinding = identifierBinding
             self.identifierLabelBinding = identifierLabelBinding
         }
-        
+
         func classificationOccured(_ viewController: ViewController, identifier: UIColor, identifierLabel: String) {
             identifierBinding.wrappedValue = identifier
             identifierLabelBinding.wrappedValue = identifierLabel
         }
     }
-    
+
     func makeCoordinator() -> Coordinator {
         Coordinator(identifierBinding: identifier, identifierLabelBinding: identifierLabel)
     }
-    
-    func makeUIViewController(context:Context) -> ViewController {
+
+    func makeUIViewController(context: Context) -> ViewController {
         let view = ViewController()
         view.delegate = context.coordinator
         return view
     }
-    func updateUIViewController(_ uitestView: ViewController, context: Context){
-        
+    func updateUIViewController (_ uitestView: ViewController, context: Context) {
+
+        //        //        let devices = AVCaptureDevice.devices(for: AVMediaType.video)
+        //        let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera],
+        //                                                                mediaType: .video,
+        //                                                                position: .unspecified)
+        //
+        //        let devices = discoverySession.devices
+        //
+        //        if cameraPosition == true {
+        //            for device in devices {
+        //                if device.position == AVCaptureDevice.Position.back {
+        //                    self.backFacingCamera = device
+        //                }
+        //            }
+        //        } else if cameraPosition == false {
+        //            if cameraPosition == true {
+        //                for device in devices {
+        //                    if device.position == AVCaptureDevice.Position.front {
+        //                        self.backFacingCamera = device
+        //                    }
+        //                }
+        //            }
+        //            self.currentDevice = self.backFacingCamera
+        //            do {
+        //                let captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice!)
+        //                let videoOutput = AVCaptureVideoDataOutput()
+        //                videoOutput.videoSettings =
+        //                [kCVPixelBufferPixelFormatTypeKey
+        //                 as AnyHashable: NSNumber(value: kCMPixelFormat_32BGRA)] as? [String: Any]
+        //                videoOutput.alwaysDiscardsLateVideoFrames = true
+        //                videoOutput.setSampleBufferDelegate(self, queue: queue)
+        //
+        //                if self.captureSession.canAddOutput(videoOutput) {
+        //                    self.captureSession.addOutput(videoOutput)
+        //                }
+        //                self.captureSession.addInput(captureDeviceInput)
+        //            } catch {
+        //                print(error)
+        //                return
+        //            }
+        //        }
+        //    }
+        //
+        //    extension CALayer: ObservableObject {
+        //        func pickColor(at position: CGPoint) -> UIColor? {
+        //            var pixel = [UInt8](repeatElement(0, count: 4))
+        //            let colorSpace = CGColorSpaceCreateDeviceRGB()
+        //            let bitmapInfo = CGImageAlphaInfo.premultipliedLast.rawValue
+        //            guard let context = CGContext(data: &pixel,
+        //                                          width: 1,
+        //                                          height: 1,
+        //                                          bitsPerComponent: 8,
+        //                                          bytesPerRow: 4,
+        //                                          space: colorSpace,
+        //                                          bitmapInfo: bitmapInfo) else {
+        //                return nil
+        //            }
+        //            context.translateBy(x: -position.x, y: -position.y)
+        //            render(in: context)
+        //            return UIColor(red: CGFloat(pixel[0]) / 255.0,
+        //                           green: CGFloat(pixel[1]) / 255.0,
+        //                           blue: CGFloat(pixel[2]) / 255.0,
+        //                           alpha: CGFloat(pixel[3]) / 255.0)
+        //        }
+        //    }
+        //
+        //    struct CameraTestPreview: UIViewControllerRepresentable {
+        //        typealias UIViewControllerType = ViewController
+        //        @ObservedObject var cameratest: ViewController
+        //        let identifier: Binding<UIColor>
+        //        let identifierLabel: Binding<String>
+        //
+        //        class Coordinator: ViewControllerDelegate {
+        //            var identifierBinding: Binding<UIColor>
+        //            var identifierLabelBinding: Binding<String>
+        //
+        //            init(identifierBinding: Binding<UIColor>, identifierLabelBinding: Binding<String>) {
+        //                self.identifierBinding = identifierBinding
+        //                self.identifierLabelBinding = identifierLabelBinding
+        //            }
+        //
+        //            }
+        //        }
+        //
+        //        func makeCoordinator() -> Coordinator {
+        //            Coordinator(identifierBinding: identifier, identifierLabelBinding: identifierLabel)
+        //        }
+        //
+        //        func makeUIViewController(context: Context) -> ViewController {
+        //            let view = ViewController()
+        //            view.delegate = context.coordinator
+        //            return view
+        //        }
+        //        func updateUIViewController(_ uitestView: ViewController, context: Context) {
     }
 }

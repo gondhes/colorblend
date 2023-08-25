@@ -12,18 +12,20 @@ struct OnboardingView: View {
     @State var activeScreen: Int = 0
     @State var onboarding: [Onboarding] = onboardingData
     var body: some View {
-        ZStack{
-            TabView(selection: $activeScreen){
-                ForEach(0..<onboarding.count) { onboard in
-                    OnboardingCard(onboarding: onboarding[onboard], activeScreen: $activeScreen, maxIndex: onboarding.count-1).tag(onboard)
+        ZStack {
+            TabView(selection: $activeScreen) {
+                ForEach(0..<onboarding.count, id: \.self) { onboard in
+            OnboardingCard(onboarding: onboarding[onboard],
+                           activeScreen: $activeScreen,
+                           maxIndex: onboarding.count-1).tag(onboard)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .always))
             .navigationDestination(isPresented: $isOnboarding) {
                 MainScreenView()
             }
-            VStack (alignment: .trailing){
-                HStack{
+            VStack(alignment: .trailing) {
+                HStack {
                     Spacer()
                     OnboardingSkipButton()
                 }
@@ -34,9 +36,9 @@ struct OnboardingView: View {
         }
         .background(.white)
         .ignoresSafeArea()
-        .toolbar{
-            ToolbarItem(placement: .navigationBarTrailing){
-                Button("Skip"){}
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Skip") {}
             }
         }
     }

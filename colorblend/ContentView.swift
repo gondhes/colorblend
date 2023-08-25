@@ -13,15 +13,15 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            if self.isActive{
+            if self.isActive {
                 MainScreenView()
-            }else{
+            } else {
                 SplashView()
             }
         }
-        .onAppear{
+        .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
-                withAnimation{
+                withAnimation {
                     self.isActive = true
                 }
             }

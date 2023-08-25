@@ -5,9 +5,9 @@
 ////  Created by Hafidz Ismail Hidayat on 26/07/23.
 ////
 //
-//import AVFoundation
+// import AVFoundation
 //
-//class TestingCamera{
+// class TestingCamera{
 //    var captureSession: AVCaptureSession?
 //    var frontCamera: AVCaptureDevice?
 //    var rearCamera: AVCaptureDevice?
@@ -15,17 +15,19 @@
 //    var frontCameraInput: AVCaptureDeviceInput?
 //    var rearCameraInput: AVCaptureDeviceInput?
 //    var photoOutput: AVCapturePhotoOutput?
-//}
+// }
 //
-//extension TestingCamera{
+// extension TestingCamera{
 //    func prepare(completionHandler: @escaping (Error?) -> Void) {
 //        func createCaptureSession() {
 //            self.captureSession = AVCaptureSession()
 //        }
 //        
 //        func configureCaptureDevices() throws {
-//            let session = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .unspecified)
-//            guard let cameras = (session?.devices.flatMap { $0 }), !cameras.isEmpty else { throw CameraControllerError.noCamerasAvailable }
+// let session = AVCaptureDeviceDiscoverySession
+// (deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaTypeVideo, position: .unspecified)
+//            guard let cameras = (session?.devices.flatMap { $0 }), !cameras.isEmpty
+// else { throw CameraControllerError.noCamerasAvailable }
 //            
 //            for camera in cameras {
 //                if camera.position == .front {
@@ -43,13 +45,15 @@
 //        }
 //        
 //        func configureDeviceInputs() throws {
-//            guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
+//            guard let captureSession = self.captureSession else {
+// throw CameraControllerError.captureSessionIsMissing }
 //            
 //            //4
 //            if let rearCamera = self.rearCamera {
 //                self.rearCameraInput = try AVCaptureDeviceInput(device: rearCamera)
 //                
-//                if captureSession.canAddInput(self.rearCameraInput!) { captureSession.addInput(self.rearCameraInput!) }
+//                if captureSession.canAddInput(self.rearCameraInput!) {
+// captureSession.addInput(self.rearCameraInput!) }
 //                
 //                self.currentCameraPosition = .rear
 //            }
@@ -57,7 +61,8 @@
 //            else if let frontCamera = self.frontCamera {
 //                self.frontCameraInput = try AVCaptureDeviceInput(device: frontCamera)
 //                
-//                if captureSession.canAddInput(self.frontCameraInput!) { captureSession.addInput(self.frontCameraInput!) }
+//                if captureSession.canAddInput(self.frontCameraInput!)
+// { captureSession.addInput(self.frontCameraInput!) }
 //                else { throw CameraControllerError.inputsAreInvalid }
 //                
 //                self.currentCameraPosition = .front
@@ -66,10 +71,10 @@
 //            else { throw CameraControllerError.noCamerasAvailable }
 //        }
 //        func configurePhotoOutput() throws {
-//            guard let captureSession = self.captureSession else { throw CameraControllerError.captureSessionIsMissing }
+//            guard let captureSession = self.captureSession else {
+// throw CameraControllerError.captureSessionIsMissing }
 //            
 //            self.photoOutput = AVCapturePhotoOutput()
-//            self.photoOutput!.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey : AVVideoCodecJPEG])], completionHandler: nil)
 //            
 //            if captureSession.canAddOutput(self.photoOutput) { captureSession.addOutput(self.photoOutput) }
 //            
@@ -96,9 +101,9 @@
 //            }
 //        }
 //    }
-//}
+// }
 //
-//extension TestingCamera{
+// extension TestingCamera{
 //    enum TestingCameraError: Swift.Error{
 //        case captureSessionAlreadyRunning
 //        case captureSessionIsMissing
@@ -106,10 +111,10 @@
 //        case invalidOperation
 //        case noCamerasAvailable
 //        case unknown
-//}
+// }
 //
-//public enum CameraPosition {
+// public enum CameraPosition {
 //    case front
 //    case rear
-//}
+// }
 //

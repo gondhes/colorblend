@@ -20,37 +20,39 @@ struct OnboardingButton: View {
             } else {
                 activeScreen += 1
             }
-        }){
-            ZStack{
+        }, label: {
+            ZStack {
                 RoundedRectangle(cornerRadius: 16)
                     .fill(
-                        LinearGradient(colors: [Color("ButtonGradient1"), Color("ButtonGradient2")], startPoint: .leading, endPoint: .trailing)
+                        LinearGradient(colors: [Color("ButtonGradient1"), Color("ButtonGradient2")],
+                                       startPoint: .leading,
+                                       endPoint: .trailing)
 
                     )
                     .frame(width: 145, height: 40)
-                    
+
                 Text(onboarding.buttonText)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
             }
-            
+
         }
-    }
+    )}
 }
 
-struct OnboardingSkipButton: View{
+struct OnboardingSkipButton: View {
     @AppStorage("isOnboarding") var isOnboarding: Bool?
 
-    var body: some View{
+    var body: some View {
         Button(action: {
             isOnboarding = false
-        }){
-            ZStack{
+        }, label: {
+            ZStack {
                 Text("Skip")
                     .foregroundColor(Color(.systemBlue))
             }
         }
-    }
+    )}
 }
 
 struct OnboardingButton_Previews: PreviewProvider {

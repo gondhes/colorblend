@@ -41,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		8E904CC02A5BF5EB009423EA /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		B4A4F1982A93D91700391C3E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		BD732E772A58022100C5C860 /* colorblend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = colorblend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD732E7A2A58022100C5C860 /* colorblendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = colorblendApp.swift; sourceTree = "<group>"; };
 		BD732E7C2A58022100C5C860 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +89,7 @@
 		BD732E6E2A58022100C5C860 = {
 			isa = PBXGroup;
 			children = (
+				B4A4F1982A93D91700391C3E /* .swiftlint.yml */,
 				BD732E792A58022100C5C860 /* colorblend */,
 				BD732E782A58022100C5C860 /* Products */,
 			);
@@ -205,6 +207,7 @@
 				BD732E732A58022100C5C860 /* Sources */,
 				BD732E742A58022100C5C860 /* Frameworks */,
 				BD732E752A58022100C5C860 /* Resources */,
+				B4A4F1952A93139800391C3E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -259,6 +262,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B4A4F1952A93139800391C3E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi \n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BD732E732A58022100C5C860 /* Sources */ = {
@@ -421,12 +444,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = FAV732MUB5;
+				DEVELOPMENT_TEAM = H88XQ94JS2;
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_BUNDLE_IDENTIFIER)";
+				INFOPLIST_KEY_NSCameraUsageDescription = hafidzismail.colorblend;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -436,7 +459,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hafidzismail.colorblend;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qoni.colorblend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -452,12 +475,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"colorblend/Preview Content\"";
-				DEVELOPMENT_TEAM = FAV732MUB5;
+				DEVELOPMENT_TEAM = H88XQ94JS2;
 				ENABLE_PREVIEWS = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = colorblend/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSCameraUsageDescription = "$(PRODUCT_BUNDLE_IDENTIFIER)";
+				INFOPLIST_KEY_NSCameraUsageDescription = hafidzismail.colorblend;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -467,7 +490,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = hafidzismail.colorblend;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qoni.colorblend;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

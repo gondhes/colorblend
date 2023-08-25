@@ -8,15 +8,14 @@
 import SwiftUI
 
 @main
-struct colorblendApp: App {
+struct ColorblendApp: App {
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
-
 
     var body: some Scene {
         WindowGroup {
-            if isOnboarding{
+            if isOnboarding {
                 OnboardingView()
-            } else{
+            } else {
                 ContentView()
             }
         }

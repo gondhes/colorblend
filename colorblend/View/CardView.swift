@@ -8,34 +8,33 @@
 import SwiftUI
 
 struct CardView: View {
-    var colorRecommendation: colorModel
+    var colorRecommendation: ColorModel
     @State private var imageCard: String = ""
     @Binding var isUpper: Bool
-    
-    var body: some View{
-        ZStack{
-            TabView{
-                ForEach(colorRecommendation.listColor, id: \.self){i in
-                    ZStack(alignment: .top){
-                        VStack(spacing: 10){
+    var body: some View {
+        ZStack {
+            TabView {
+                ForEach(colorRecommendation.listColor, id: \.self) {index in
+                    ZStack(alignment: .top) {
+                        VStack(spacing: 10) {
                             if isUpper == false {
-                                Text(i.label)
+                                Text(index.label)
                                     .font(.title3)
                                     .foregroundColor(.black)
                                 Image(imageCard)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxWidth: 140)
-                                    .foregroundColor(i.color)
+                                    .foregroundColor(index.color)
                                     .shadow(radius: 4, x: 0, y: 2)
-                            } else{
+                            } else {
                                 Image(imageCard)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(maxWidth: 140)
-                                    .foregroundColor(i.color)
+                                    .foregroundColor(index.color)
                                     .shadow(radius: 4, x: 0, y: 2)
-                                Text(i.label)
+                                Text(index.label)
                                     .font(.title3)
                                     .foregroundColor(.black)
                             }
@@ -45,7 +44,7 @@ struct CardView: View {
                 }
                 .tabViewStyle(.page)
             }
-        }.onAppear(){
+        }.onAppear {
             if isUpper == true {
                 imageCard = "pants"
             } else {
@@ -54,5 +53,3 @@ struct CardView: View {
         }
     }
 }
-
-
